@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class RegistroComponent {
   registroClienteDTO: RegistroClienteDTO;
-  ciudades: String[];
+  ciudades: string[];
   archivos!:FileList;
 
   constructor() {

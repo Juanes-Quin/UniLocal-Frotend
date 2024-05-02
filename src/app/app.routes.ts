@@ -7,5 +7,6 @@ export const routes: Routes = [
     {path: '', component: InicioComponent},
     {path: 'login', component: LoginComponent},
     {path: 'registro', component: RegistroComponent},
-    {path: '**', pathMatch: "full", redirectTo: "" }
+
+    {path: '**', pathMatch: "full", redirectTo: "" }//Se siempre es el ultimo de la lista
 ];

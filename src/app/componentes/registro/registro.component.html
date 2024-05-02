@@ -1,4 +1,4 @@
-<form #f="ngForm" (ngSubmit)="registrar">
+<form #f="ngForm" (ngSubmit)="registrar()">
     <div>
         <label>Nombre: </label>
         <input type="text" maxlength="30" required="true" name="nombre" [(ngModel)]="registroClienteDTO.nombre">
