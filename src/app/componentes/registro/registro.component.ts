@@ -52,5 +52,5 @@ export class RegistroComponent {
       this.registroClienteDTO.fotoPerfil = this.archivos[0].name;
     }
   }
-  
+
 }

@@ -1,6 +1,4 @@
-export class MensajeDTO<T> {
-    constructor(
-        public error: boolean,
-        public respuesta: T
-    ) { }
+export interface MensajeDTO {
+  error: boolean;
+  respuesta: any;
 }

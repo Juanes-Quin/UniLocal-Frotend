@@ -1,0 +1,55 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  width: 400px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Botones */
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-outline-light {
+  background-color: #fff;
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+
+/* Iconos */
+.fa-solid {
+  font-family: 'Font Awesome 5 Free';
+}
+
+/* Recuperar Contraseña */
+.recuperar-contrasena {
+  margin-top: 10px;
+  text-align: center;
+}
