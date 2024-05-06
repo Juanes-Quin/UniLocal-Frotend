@@ -1,0 +1,62 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.titulo-paciente {
+  background-color: #007bff; /* Color de fondo azul claro */
+  color: white; /* Color de texto blanco */
+  padding: 10px 100px; /* Espaciado interno para el contenido */
+  border-radius: 5px; /* Bordes redondeados */
+  display: inline-block; /* Hace que el fondo se ajuste al contenido */
+}
+
+
+.main-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.category {
+  text-align: center;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+}
+
+/* Estilo para los enlaces de las secciones Pacientes y Médico */
+.link {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  background-color: #6f42c1; /* Color de fondo morado */
+  border-radius: 5px;
+  margin: 10px 0; /* Espaciado entre enlaces */
+  transition: background-color 0.3s, transform 0.3s; /* Transiciones para el color de fondo y el efecto de transformación */
+}
+
+/* Efecto al pasar el ratón sobre los enlaces */
+.link:hover {
+  background-color: #512da8; /* Color de fondo morado oscuro al pasar el ratón */
+  transform: scale(1.1); /* Efecto de escala al pasar el ratón */
+}
+
+.divider {
+  border: 0;
+  width: 90%;
+  height: 3px;
+  background-image: linear-gradient(to right, rgba(0, 0, 139, 0), rgba(0, 0, 139, 0.9), rgba(0, 0, 139, 0));
+  margin: px 0;
+}
+
+.divider {
+  border: 0;
+  height: 3px;
+  background-image: linear-gradient(to right, rgba(0, 0, 139, 0), rgba(0, 0, 139, 0.9), rgba(0, 0, 139, 0));
+  margin: 15px 0; /* Ajusté el margen para que sea similar al otro */
+}
