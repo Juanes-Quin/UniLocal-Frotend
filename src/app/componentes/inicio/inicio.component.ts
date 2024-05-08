@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
-import { Routes } from '@angular/router';
-
-const routes: Routes = [
-];
+import { RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [],
+  imports: [RouterModule], //Siempre debe importarse cuando se usa routerLink
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })

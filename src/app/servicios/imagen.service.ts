@@ -7,11 +7,7 @@ import { ImagenDTO } from '../dto/ImagenDTO';
 @Injectable({
   providedIn: 'root'
   })
-
-  @Injectable({
-    providedIn: 'root'
-    })
-    export class ImagenService {
+  export class ImagenService {
     private imgURL = "http://localhost:8081/api/imagenes";
     constructor(private http: HttpClient) { }
     public subir(imagen: FormData): Observable<MensajeDTO> {
@@ -23,4 +19,4 @@ import { ImagenDTO } from '../dto/ImagenDTO';
 
     imagenDTO});
     }
-    }
+  }
