@@ -1,1 +1,57 @@
-<p>negocios works!</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Actualización de Negocio</title>
+</head>
+<body>
+
+  <div class="card">
+
+    <div class="card-header">
+      <h5 class="mb-0"><i class="fa-solid fa-user-plus me-3"></i>Actualización de Negocio</h5>
+    </div>
+
+    <div class="card-body">
+
+      <form >
+
+        <div class="form-group">
+          <label for="actualizarNegocioDTO">Actualizar Negocio:</label>
+          <input #actualizarNegocioDTO="ngModel" type="text" name="actualizarNegocioDTO" class="form-control" [(ngModel)]="actualizarNegocioDTO" required>
+        </div>
+
+        <div class="form-group">
+          <label for="itemNegociosRevisionDTO">Item de Negocios en Revisión:</label>
+          <input #itemNegociosRevisionDTO="ngModel" type="text" name="itemNegociosRevisionDTO" class="form-control" [(ngModel)]="itemNegociosRevisionDTO" required>
+        </div>
+
+        <div class="form-group">
+          <label for="registroNegocioDTO">Registro de Negocio:</label>
+          <input #registroNegocioDTO="ngModel" type="text" name="registroNegocioDTO" class="form-control" [(ngModel)]="registroNegocioDTO" required>
+        </div>
+
+        <div class="form-group">
+          <label for="reporteDTO">Reporte:</label>
+          <input #reporteDTO="ngModel" type="text" name="reporteDTO" class="form-control" [(ngModel)]="reporteDTO" required>
+        </div>
+
+        <div class="mb-3">
+
+          <!--
+            falra esto en actualizar negocio
+            (click)="actualizarNegocioDTO()"
+          -->
+
+          <button class="btn btn-primary" type="submit" >
+            <i class="fa-solid fa-circle-plus me-1"></i>Actualizar
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+
+
+

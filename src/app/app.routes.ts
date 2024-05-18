@@ -8,9 +8,13 @@ import { FavoritosClienteComponent } from './componentes/favoritos-cliente/favor
 import { EditarPerfilComponent } from './componentes/editar-perfil/editar-perfil.component';
 import { ReservaComponent } from './componentes/reserva/reserva.component';
 
+
+
+//modules
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { AlertaComponent } from './alerta/alerta.component';
 
 export const routes: Routes = [
     {path: '', component: InicioComponent},
@@ -26,6 +30,8 @@ export const routes: Routes = [
 
 @NgModule({
   declarations: [
+    //PORQUE NO ME DEJA
+    //AlertaComponent
 
   ],
   imports: [

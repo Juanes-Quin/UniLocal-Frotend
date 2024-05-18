@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FavoritoDTO } from '../../dto/cliente/favoritoDTO';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-favoritos-cliente',

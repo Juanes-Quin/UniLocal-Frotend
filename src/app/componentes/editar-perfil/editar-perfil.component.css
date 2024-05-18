@@ -1,0 +1,7 @@
+/* Estilo para el separador */
+.separator {
+  border: 0;
+  height: 3px; /* Aumenté la altura para hacer el separador más visible */
+  background-image: linear-gradient(to right, rgba(0, 0, 139, 0), rgba(0, 0, 139, 0.9), rgba(0, 0, 139, 0));
+  margin: 1.5rem 0; /* Ajusté el margen para separar más el título del botón anterior */
+}
