@@ -1,4 +1,5 @@
-import { Horario } from "../horario";
+//mirar porque en la calse horario no hay nada
+import { Horario } from "../Horario";
 
 export class ActualizarNegocioDTO {
     constructor(

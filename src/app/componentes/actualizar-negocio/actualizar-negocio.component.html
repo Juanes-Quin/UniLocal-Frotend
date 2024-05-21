@@ -1,1 +1,107 @@
-<p>actualizar-negocio works!</p>
+<div class="card">
+
+  <div class="card-header ps-5 pt-4 pb-4">
+    <h5 class="mb-0"><i class="fa-solid fa-user-plus me-3"></i>Editar Negocio</h5>
+  </div>
+
+  <div class="card-body p-5">
+    <form #formulario="ngForm">
+
+      <div class="mb-3">
+        <label class="col-sm-2 col-form-label">ID:</label>
+        <div class="col-sm-10">
+          <input #id="ngModel" type="text" maxlength="10" required="true" name="id" [(ngModel)]="actualizarDTO.id">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="col-sm-2 col-form-label">Nombre:</label>
+        <div class="col-sm-10">
+          <input #nombre="ngModel" [ngClass]="nombre.invalid && (nombre.dirty || nombre.touched) ? 'is-invalid' : ''"
+            type="text" name="nombre" class="form-control" required [(ngModel)]="actualizarDTO.nombre" />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="col-sm-2 col-form-label">Descripción:</label>
+        <div class="col-sm-10">
+          <textarea #descripcion="ngModel" [ngClass]="descripcion.invalid && (descripcion.dirty || descripcion.touched) ? 'is-invalid' : ''"
+            name="descripcion" class="form-control" required [(ngModel)]="actualizarDTO.descripcion"></textarea>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="col-sm-2 col-form-label">Horarios:</label>
+        <div class="col-sm-10">
+          <input #horarios="ngModel" [ngClass]="horarios.invalid && (horarios.dirty || horarios.touched) ? 'is-invalid' : ''"
+            type="text" name="horarios" class="form-control" required [(ngModel)]="actualizarDTO.horarios" />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="col-sm-2 col-form-label">Teléfonos:</label>
+        <div class="col-sm-10">
+          <input #telefonos="ngModel" [ngClass]="telefonos.invalid && (telefonos.dirty || telefonos.touched) ? 'is-invalid' : ''"
+            type="text" name="telefonos" class="form-control" required [(ngModel)]="actualizarDTO.telefonos" />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="col-sm-2 col-form-label">Categoría de Negocio:</label>
+        <div class="col-sm-10">
+          <input #categoriaNegocio="ngModel" [ngClass]="categoriaNegocio.invalid && (categoriaNegocio.dirty || categoriaNegocio.touched) ? 'is-invalid' : ''"
+            type="text" name="categoriaNegocio" class="form-control" required [(ngModel)]="actualizarDTO.categoriaNegocio" />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="col-sm-2 col-form-label">URL de Foto:</label>
+        <div class="col-sm-8">
+          <input type="file" class="form-control" required="true" name="urlfoto" (change)="onFileChange($event)" multiple>
+        </div>
+
+        <div class="col-sm-2" >
+          <button type="submit" [disabled]="archivos == null" class="btn btn-primary"
+            (click)="subirImagen()" >
+            <i class="fa-solid fa-cloud-arrow-up me-2"></i>Subir Foto
+          </button>
+        </div>
+
+        <div class="col-sm-10">
+          <input #urlFoto="ngModel" [ngClass]="urlFoto.invalid && (urlFoto.dirty || urlFoto.touched) ? 'is-invalid' : ''"
+            type="text" name="urlFoto" class="form-control" required [(ngModel)]="actualizarDTO.urlFoto" />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="col-sm-2 col-form-label">Código del Cliente:</label>
+        <div class="col-sm-10">
+          <input #codigoCliente="ngModel" [ngClass]="codigoCliente.invalid && (codigoCliente.dirty || codigoCliente.touched) ? 'is-invalid' : ''"
+            type="text" name="codigoCliente" class="form-control" required [(ngModel)]="actualizarDTO.codigoCliente" />
+        </div>
+      </div>
+
+      <!--
+      <div class="mb-3">
+        <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid" (click)="actualizarNegocio()">
+          <i class="fa-solid fa-circle-plus me-1"></i>Actualizar Negocio
+        </button>
+      </div>
+
+      <div class="mb-3">
+        <button class="btn btn-danger" type="submit" (click)="eliminarNegocio()">
+          <i class="fa-solid fa-trash me-1"></i>Eliminar negocio
+        </button>
+      </div>
+
+      -->
+
+      <hr class="separator">
+
+      <h5 class="mb-3">Cambiar la contraseña</h5>
+
+      <!-- Campos para cambiar la contraseña -->
+
+    </form>
+  </div>
+</div>

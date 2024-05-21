@@ -39,6 +39,8 @@ export class ClienteService {
     return this.http.get<MensajeDTO>(`${this.userUrl}/lugares-creados-cliente/${codigoLugaresCreados}`);
   }
 
+  
+
 
   //=================================================================================================0
   //no se su se utilice
@@ -80,5 +82,5 @@ export class ClienteService {
   public filtrarCitasPorMedico(filtroBusquedaDTO: FiltroBusquedaDTO): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.userUrl}/filtrar-citas-por-medico`);
   }*/
-  
+
 }

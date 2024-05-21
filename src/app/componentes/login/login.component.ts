@@ -1,10 +1,12 @@
 import { Component } from "@angular/core";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 import { SesionDTO } from "../../dto/cuenta/sesionDTO";
 import { TokenService } from '../../servicios/token.service';
 import { AuthService } from '../../servicios/auth.service';
 import { Alerta } from '../../dto/alerta';
+import { AlertaComponent } from "../../alerta/alerta.component";
 
 
 
@@ -12,10 +14,12 @@ import { Alerta } from '../../dto/alerta';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, AlertaComponent, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
+
+
 export class LoginComponent {
 
   sesionDTO: SesionDTO
