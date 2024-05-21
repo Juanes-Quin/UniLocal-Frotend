@@ -13,6 +13,7 @@ import { ReservaComponent } from './componentes/reserva/reserva.component';
 import { RecuperarContrasenaComponent } from './componentes/recuperar-contrasena/recuperar-contrasena.component';
 
 //imports de negocio
+import { GestionNegociosComponent } from './componentes/gestion-negocios/gestion-negocios.component';
 import { NegociosComponent } from './componentes/negocios/negocios.component';
 import { ActualizarNegocioComponent } from './componentes/actualizar-negocio/actualizar-negocio.component';
 
@@ -40,6 +41,7 @@ export const routes: Routes = [
     {path: 'favoritos', component: FavoritosClienteComponent},
     {path: 'editarPerfil', component: EditarPerfilComponent},
     {path: 'reserva', component: ReservaComponent},
+    {path: 'gestionNegocios', component: GestionNegociosComponent},
     {path: 'negocios', component: NegociosComponent},
     {path: 'actualizarNegocio', component: ActualizarNegocioComponent},
 
