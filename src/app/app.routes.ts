@@ -16,6 +16,8 @@ import { RecuperarContrasenaComponent } from './componentes/recuperar-contrasena
 import { GestionNegociosComponent } from './componentes/gestion-negocios/gestion-negocios.component';
 import { NegociosComponent } from './componentes/negocios/negocios.component';
 import { ActualizarNegocioComponent } from './componentes/actualizar-negocio/actualizar-negocio.component';
+import { CrearNegocioComponent } from './componentes/crear-negocio/crear-negocio.component';
+import { VerDetalleNegocioComponent } from './componentes/ver-detalle-negocio/ver-detalle-negocio.component';
 
 //imports de la agenda
 import { AgendaComponent } from './componentes/agenda/agenda.component';
@@ -25,7 +27,7 @@ import { RegistroAgendaComponent } from './componentes/registro-agenda/registro-
 
 
 //modules
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AlertaComponent } from './alerta/alerta.component';
@@ -44,6 +46,8 @@ export const routes: Routes = [
     {path: 'gestionNegocios', component: GestionNegociosComponent},
     {path: 'negocios', component: NegociosComponent},
     {path: 'actualizarNegocio', component: ActualizarNegocioComponent},
+    {path: 'crearNegocio', component: CrearNegocioComponent},
+    {path: 'verDetalleNegocio/:codigo', component: VerDetalleNegocioComponent},
 
     {path: '**', pathMatch: "full", redirectTo: "" }//Se siempre es el ultimo de la lista
 ];
