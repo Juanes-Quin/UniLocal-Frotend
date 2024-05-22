@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { RegistroClienteDTO } from '../dto/cliente/registroClienteDTO';
 import { MensajeDTO } from '../dto/MensajeDTO';
 import { SesionDTO } from '../dto/cuenta/sesionDTO';
+
+const TOKEN_KEY = "AuthToken";
 @Injectable({
   providedIn: 'root'
 })
