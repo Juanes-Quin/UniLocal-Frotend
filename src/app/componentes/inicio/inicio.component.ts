@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MapaService } from '../../servicios/mapa.service';
+//import { MapaService } from '../../servicios/mapa.service';
 
 @Component({
   selector: 'app-inicio',
@@ -9,9 +9,10 @@ import { MapaService } from '../../servicios/mapa.service';
   styleUrl: './inicio.component.css'
 })
 export class InicioComponent {
-  constructor(private mapaService: MapaService) { }
-  
+  //private mapaService: MapaService
+  constructor() { }
+
   ngOnInit(): void {
-    this.mapaService.crearMapa();
+    //this.mapaService.crearMapa();
   }
 }

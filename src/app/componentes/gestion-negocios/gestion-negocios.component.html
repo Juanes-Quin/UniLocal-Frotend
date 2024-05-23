@@ -4,8 +4,8 @@
   </div>
   <div class="card-body p-5">
     <div class="mb-3">
-      <button type="button" routerLink="/crear-negocio" class="btn btn-success me-2"><i
-          class="fa-solid fa-plus me-1"></i> Crear</button>
+      <button type="button" [routerLink]="['/verDetalleAgenda']" class="btn btn-success me-2"><i
+          class="fa-solid fa-plus me-1" ></i> Crear</button>
 
       <button type="button" class="btn btn-danger anim-e" [disabled]="seleccionados.length == 0"
         (click)="borrarNegocios()"><i class="fa-solid fa-trash me-1"></i> Eliminar

@@ -49,7 +49,7 @@ export const routes: Routes = [
     {path: 'crearNegocio', component: CrearNegocioComponent},
     {path: 'verDetalleNegocio/:codigo', component: VerDetalleNegocioComponent},
 
-    {path: '**', pathMatch: "full", redirectTo: "" }//Se siempre es el ultimo de la lista
+    {path: '**', pathMatch: "full", redirectTo: "" }// siempre es el ultimo de la lista
 ];
 
 @NgModule({

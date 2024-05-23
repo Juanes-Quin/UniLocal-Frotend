@@ -1,6 +1,7 @@
-import { Injectable } from "@angular/core";
+/*
+{import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import mapboxgl from "mapbox-gl";
+import mapboxgl from 'mapbox-gl';
 import { ItemNegocioDTO } from "../dto/negocio/item-negocio-dto";
 
 @Injectable({
@@ -27,7 +28,7 @@ export class MapaService {
     this.mapa.addControl(
       new mapboxgl.GeolocateControl({
         positionOptions: { enableHighAccuracy: true },
-        trackUserLocation: true 
+        trackUserLocation: true
       })
     );
   }
@@ -65,6 +66,7 @@ export class MapaService {
       .setPopup(new mapboxgl.Popup().setHTML(negocio.nombre))
       .addTo(this.mapa);
     });
-    
+
   }
 }
+*/
