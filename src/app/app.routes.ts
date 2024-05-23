@@ -25,7 +25,6 @@ import { VerDetalleAgendaComponent } from './componentes/ver-detalle-agenda/ver-
 import { RegistroAgendaComponent } from './componentes/registro-agenda/registro-agenda.component';
 
 
-
 //modules
 import { NgModule, Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -48,7 +47,7 @@ export const routes: Routes = [
     {path: 'actualizarNegocio', component: ActualizarNegocioComponent},
     {path: 'crearNegocio', component: CrearNegocioComponent},
     {path: 'verDetalleNegocio/:codigo', component: VerDetalleNegocioComponent},
-
+    
     {path: '**', pathMatch: "full", redirectTo: "" }//Se siempre es el ultimo de la lista
 ];
 

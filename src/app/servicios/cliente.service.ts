@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { MensajeDTO } from '../dto/MensajeDTO';
 import { ActualizarClienteDTO } from '../dto/cliente/actualizarclienteDTO';
 import { FavoritoDTO } from '../dto/cliente/favoritoDTO';
+import { ItemDetalleClienteDTO } from '../dto/cliente/itemDetalleClienteDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,12 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-  public editarPerfil(actualizarClienteDTO: ActualizarClienteDTO): Observable<MensajeDTO> {
+  public actualizarCliente(actualizarClienteDTO: ActualizarClienteDTO): Observable<MensajeDTO> {
     return this.http.put<MensajeDTO>(`${this.userUrl}/actualizar-perfil-cliente`, actualizarClienteDTO);
+  }
+
+  public obtenerCliente (codigo: number): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.userUrl}/obtener-cliente/${codigo}`);
   }
 
   public eliminarCuenta(codigo: number): Observable<MensajeDTO> {
@@ -35,12 +40,20 @@ export class ClienteService {
     return this.http.delete<MensajeDTO>(`${this.userUrl}/eliminar-favoritos/${codigoRemoverFavoritos}`);
   }
 
-  public listaLugaresCreados(codigoLugaresCreados: number): Observable<MensajeDTO> {
+  public listarLugaresCreados(codigoLugaresCreados: number): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.userUrl}/lugares-creados-cliente/${codigoLugaresCreados}`);
   }
 
-  
 
+  public ItemListaLugaresCreadosDTO(Categoria: any): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.userUrl}/buscar-negocio-categoria/${Categoria}`);
+  }
+
+
+ // public buscarNegocioNombre(FiltroBusquedaDTO: ): Observable<MensajeDTO> {
+   // return this.http.get<MensajeDTO>(`${this.userUrl}/buscar-negocio-nombre/`, filtrobusquedaDTO );
+
+  //}
 
   //=================================================================================================0
   //no se su se utilice

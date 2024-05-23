@@ -14,16 +14,13 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  //donde esta /registrar debe ir el mismo nombre que le pusieron en los controles del back end
-  //ejemplo /registrar-cliente este es el que esta en el back en entonces se pone el mismo
-  public registrarPaciente(paciente: RegistroClienteDTO): Observable<MensajeDTO> {
-    return this.http.post<MensajeDTO>(`${this.authURL}/registrar-cliente`, paciente);
-  }
 //login
 public login(loginDTO:SesionDTO):Observable<MensajeDTO>{
   return this.http.post<MensajeDTO>(`${this.authURL}/login`, loginDTO);
 }
 
-
+public registrarCliente(RegistroClienteDTO:RegistroClienteDTO):Observable<MensajeDTO>{
+  return this.http.post<MensajeDTO>(`${this.authURL}/registrar-cliente`, RegistroClienteDTO);
+}
 
 }

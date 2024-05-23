@@ -32,7 +32,7 @@ export class EditarPerfilComponent {
   }
 
   public editarPerfil() {
-    this.clienteService.editarPerfil(this.actualizarClienteDTO).subscribe({
+    this.clienteService.actualizarCliente(this.actualizarClienteDTO).subscribe({
       next: data => {
         this.alerta = { mensaje: data.respuesta, tipo: "success" };
       },
