@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ActualizarNegocioComponent } from '../componentes/actualizar-negocio/actualizar-negocio.component';
 
+@Injectable({
+  providedIn: 'root'
+})
 export class NegociosService {
   private negociosURL = "http://localhost:8080/api/negocios";
   constructor(private http: HttpClient) { }
