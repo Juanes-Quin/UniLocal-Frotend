@@ -7,9 +7,9 @@ export class RegistroNegocioDTO{
         public descripcion:string='',
         public ubicacion: Ubicacion = new Ubicacion(),
         public horarios:Horario[] = [],
-        public telefono:string[]= [],
+        public telefono:string | string[]= [],
         public categoriaNegocio:string='',
-        public urlFoto:string[] = [],
+        public urlFoto:string | string[] = [],
         public codigoPropietario:string='',
     ){}
 }

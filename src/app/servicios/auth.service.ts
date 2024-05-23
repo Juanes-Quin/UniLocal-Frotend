@@ -19,18 +19,11 @@ export class AuthService {
   public registrarPaciente(paciente: RegistroClienteDTO): Observable<MensajeDTO> {
     return this.http.post<MensajeDTO>(`${this.authURL}/registrar-cliente`, paciente);
   }
-
+//login
 public login(loginDTO:SesionDTO):Observable<MensajeDTO>{
-  return this.http.post<MensajeDTO>(`${this.authURL}/login-cliente`, loginDTO);
+  return this.http.post<MensajeDTO>(`${this.authURL}/login`, loginDTO);
 }
 
-/*
-TOCA HACER OTRO SESIONDTO PARA MODERADOR Y QUITAR UNO EN LOGIN DEL BACK END Y DEJARLO GENERICO
-OSEA UN LOGIN PARA LOS DOS Y YA SE DIFERENCIA POR EL TOKEN
 
-public login(loginDTO:SesionDTO):Observable<MensajeDTO>{
-  return this.http.post<MensajeDTO>(`${this.authURL}/login-moderador`, loginDTO);
-}
-*/
 
 }

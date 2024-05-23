@@ -19,7 +19,6 @@ import { Alerta } from '../../dto/alerta';
 export class ActualizarNegocioComponent {
 
   actualizarDTO: ActualizarNegocioDTO;
-
   archivos!:FileList;
   alerta !: Alerta;
 
@@ -90,6 +89,15 @@ export class ActualizarNegocioComponent {
       this.alerta = { mensaje: 'Debe seleccionar una imagen y subirla', tipo: "danger" };
     }
   }
+  /** 
+  onSubmit(formulario: Ngform){
+    if(){
+      console.log('Formulario enviado',this.actualizarDTO);
 
-
+    }
+    else{
+    this.alerta = {mensaje: 'Porfavor, completa todos los campos requeridos ',tipo:'danger'};
+  }
+}
+*/
 }
