@@ -70,7 +70,7 @@ export class EditarPerfilComponent {
 
   */
 
-  public eliminarCuenta (){
+  /*public eliminarCuenta (){
     let codigo = this.tokenService.getCodigo();
     this.clienteService.eliminarCuenta(codigo).subscribe({
       next: data => {
@@ -80,7 +80,7 @@ export class EditarPerfilComponent {
         console.log(error);
       }
     });
-  }
+  }*/
 
   onlyNumberKey(event: any) {
     const charCode = event.which ? event.which : event.keyCode;

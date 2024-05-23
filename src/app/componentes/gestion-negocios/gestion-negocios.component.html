@@ -8,6 +8,15 @@
             <button type="button" [routerLink]="['/crearNegocio']" class="btn btn-success me-2"><i
           class="fa-solid fa-plus me-1"></i> Crear</button>
 
+  <div class="card-header ps-5 pt-4 pb-4">
+    <h5 class="mb-0"><i class="fa-solid fa-location-dot me-3"></i>Gestión de negocios</h5>
+  </div>
+  <div class="card-body p-5">
+    <div class="mb-3">
+      <button type="button" [routerLink]="['/verDetalleAgenda']" class="btn btn-success me-2"><i
+          class="fa-solid fa-plus me-1" ></i> Crear</button>
+
+
             <button type="button" class="btn btn-danger anim-e" [disabled]="seleccionados.length == 0" (click)="borrarNegocios()"><i class="fa-solid fa-trash me-1"></i> Eliminar
         {{textoBtnEliminar}}</button>
 

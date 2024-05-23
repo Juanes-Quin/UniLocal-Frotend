@@ -3,6 +3,8 @@ import { MapaService } from '../../servicios/mapa.service';
 import { Router, RouterModule } from '@angular/router';
 import { RegistroNegocioDTO } from '../../dto/negocio/RegistroNegocioDTO';
 import { NegociosService } from '../../servicios/negocios.service';
+//import { MapaService } from '../../servicios/mapa.service';
+
 
 @Component({
   selector: 'app-inicio',
@@ -11,6 +13,7 @@ import { NegociosService } from '../../servicios/negocios.service';
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })
+
 export class InicioComponent implements OnInit {
   registroNegocioDTO: RegistroNegocioDTO;
 
@@ -24,6 +27,6 @@ export class InicioComponent implements OnInit {
     this.mapaService.agregarMarcador().subscribe((marcador) => {
       this.registroNegocioDTO.ubicacion.latitud = marcador.lat;
       this.registroNegocioDTO.ubicacion.longitud = marcador.lng;
-    })
+    });
   }
 }

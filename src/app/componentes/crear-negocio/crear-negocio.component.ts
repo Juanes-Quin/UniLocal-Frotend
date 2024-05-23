@@ -30,7 +30,7 @@ export class CrearNegocioComponent {
   private setCodigoPropietario() {
     const token = this.tokenService.getToken();
     if (token) {
-      const decodedToken: any = this.tokenService.getCodigo;
+      const decodedToken: any = this.tokenService.getToken;
       this.registroNegocioDTO.codigoPropietario = decodedToken.id; 
     }
   }
