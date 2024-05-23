@@ -14,12 +14,19 @@ export class AuthService {
   private authURL = "http://localhost:8080/api/auth";
   constructor(private http: HttpClient) { }
 
-  public registrarCliente(cliente: RegistroClienteDTO): Observable<MensajeDTO> {
-    return this.http.post<MensajeDTO>(`${this.authURL}/registrar-cliente`, cliente);
-  }
+
+//login
+public login(loginDTO:SesionDTO):Observable<MensajeDTO>{
+  return this.http.post<MensajeDTO>(`${this.authURL}/login`, loginDTO);
+}
+
+public registrarCliente(RegistroClienteDTO:RegistroClienteDTO):Observable<MensajeDTO>{
+  return this.http.post<MensajeDTO>(`${this.authURL}/registrar-cliente`, RegistroClienteDTO);
+}
 
   public loginCliente(loginDTO: SesionDTO): Observable<MensajeDTO> {
     return this.http.post<MensajeDTO>(`${this.authURL}/login-cliente`, loginDTO);
   }
+
 
 }

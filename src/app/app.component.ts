@@ -21,7 +21,7 @@ export class AppComponent implements OnInit{
     ngOnInit(): void {
       this.isLogged = this.tokenService.isLogged();
       if(this.isLogged){
-        this.email = this.tokenService.getEmail();
+        //this.email = this.tokenService.getEmail(); // preguntar 
     }
   }
 

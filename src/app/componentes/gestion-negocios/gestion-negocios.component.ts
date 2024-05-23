@@ -4,6 +4,7 @@ import { NegociosService } from '../../servicios/negocios.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PublicoService } from '../../servicios/publico.service';
+import { TokenService } from '../../servicios/token.service';
 
 @Component({
   selector: 'app-gestion-negocios',
@@ -18,7 +19,7 @@ export class GestionNegociosComponent {
   seleccionados: ItemNegocioDTO[];
   textoBtnEliminar: string;
 
-constructor(private negocioService: NegociosService, private publicoService: PublicoService) {
+constructor(private negocioService: NegociosService, private publicoService: PublicoService, private tokenService: TokenService) {
 this.negocios = [];
 this.seleccionados = [];
 this.textoBtnEliminar = "Eliminar";
@@ -60,13 +61,14 @@ public borrarNegocios() {
   this.actualizarMensaje();
 }
 
-private listarNegocios() {
-  this.publicoService.listarCiudades().subscribe({
+public listarNegocios(){
+  const codigoCliente = this.tokenService.getCodigo();
+  this.negocioService.listarNegociosPropietario(codigoCliente).subscribe({
   next: (data) => {
   this.negocios = data.respuesta;
   },
   error: (error) => {
-  console.log("Error al cargar las ciudades");
+  console.error(error);
   }
   });
   }

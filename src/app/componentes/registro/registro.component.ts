@@ -2,16 +2,18 @@ import { Component } from '@angular/core';
 import { RegistroClienteDTO } from '../../dto/cliente/registroClienteDTO';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
 import { PublicoService } from '../../servicios/publico.service';
 import { AuthService } from '../../servicios/auth.service';
 import { AlertaComponent } from '../alerta/alerta.component';
 import { Alerta } from '../../dto/alerta';
 import { ImagenService } from '../../servicios/imagen.service';
+import { Route, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })

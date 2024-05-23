@@ -48,14 +48,14 @@ export class LoginComponent {
   }
 
   public login() {
-    this.authService.login(this.sesionDTO).subscribe({
-      next: data => {
-        this.tokenService.login(data.respuesta.token);
-      },
-      error: error => {
-      this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
-      }
-    });
+    this.authService.loginCliente(this.sesionDTO).subscribe({
+    next: data => {
+      this.tokenService.login(data.respuesta.token);
+    },
+    error: error => {
+    this.alerta = new Alerta(error.error.respuesta, "danger" );
   }
+});
+}
 
 }
