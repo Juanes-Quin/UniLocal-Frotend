@@ -6,7 +6,7 @@
     </div>
 
     <div class="card-body p-5">
-        <form #f="ngForm" (ngSubmit)="registrar()">
+        <form #f="ngForm">
 
           <div>
               <label class="col-sm-2 col-form-label">Nombre: </label>
@@ -15,11 +15,17 @@
               </div>
           </div>
 
-            <div class="mb-3 row">
-              <label class="col-sm-2 col-form-label">Foto: </label>
-              <div class="col-sm-8">
-                <input type="file" class="form-control" required="true" name="fotoPerfil" (change)="onFileChange($event)" multiple>
-              </div>
+          <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Foto: </label>
+            <div class="col-sm-8">
+            <input type="file" class="form-control" name="foto" (change)="onFileChange($event)" />
+            </div>
+            <div class="col-sm-2" >
+            <button type="submit" [disabled]="archivos == null" class="btn btn-primary"
+            (click)="subirImagen()" >
+            <i class="fa-solid fa-cloud-arrow-up me-2"></i>Subir Foto
+            </button>
+            </div>
             </div>
 
             <div>
@@ -61,7 +67,12 @@
             </div>
 
             @if (!sonIguales()) {<p>Las contraseñas no coinciden</p>}
-           <button type="submit" [disabled]="f.invalid || !sonIguales()">Registrarse</button>
+           <button type="submit" [disabled]="f.invalid || !sonIguales()" (click)="registrar()">Registrarse</button>
+
+           <!--
+           <app-alerta [alerta]="alerta"></app-alerta>
+           -->
+
         </form>
     </div>
     </div>

@@ -6,7 +6,7 @@ import { SesionDTO } from "../../dto/cuenta/sesionDTO";
 import { TokenService } from '../../servicios/token.service';
 import { AuthService } from '../../servicios/auth.service';
 import { Alerta } from '../../dto/alerta';
-import { AlertaComponent } from "../../alerta/alerta.component";
+import { AlertaComponent } from "../alerta/alerta.component";
 
 
 

@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { RegistroClienteDTO } from '../../dto/cliente/registroClienteDTO';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { PublicoService } from '../../servicios/publico.service';
+import { AuthService } from '../../servicios/auth.service';
+import { AlertaComponent } from '../alerta/alerta.component';
+import { Alerta } from '../../dto/alerta';
+import { ImagenService } from '../../servicios/imagen.service';
 
 @Component({
   selector: 'app-registro',
@@ -14,8 +19,9 @@ export class RegistroComponent {
   registroClienteDTO: RegistroClienteDTO;
   ciudades: string[];
   archivos!:FileList;
+  alerta!:Alerta;
 
-  constructor() {
+  constructor(private publicoService: PublicoService, private authService: AuthService, private imagenService: ImagenService){
     this.registroClienteDTO = new RegistroClienteDTO();
     this.ciudades = [];
     this.cargarCiudades();
@@ -25,12 +31,19 @@ export class RegistroComponent {
    * registrar
    */
   public registrar() {
-    if(this.registroClienteDTO.fotoPerfil != "") {
-      console.log(this.registroClienteDTO);
-    } else {
-      console.log("Debe caragar al menos una foto");
+    if (this.registroClienteDTO.fotoPerfil != "") {
+    this.authService.registrarCliente(this.registroClienteDTO).subscribe({
+    next: (data) => {
+    this.alerta = new Alerta(data.respuesta, "success");
+    },
+    error: (error) => {
+    this.alerta = new Alerta(error.error.respuesta, "danger");
     }
-  }
+    });
+    } else {
+    this.alerta = new Alerta("Debe subir una imagen", "danger");
+    }
+    }
 
   /**
    * sonIguales
@@ -40,8 +53,15 @@ export class RegistroComponent {
   }
 
   private cargarCiudades() {
-    this.ciudades = ["ARMENIA", "PEREIRA", "CALI", "MEDELLIN", "BOGOTA", "BUCARAMANGA", "CARTAGENA"];
-  }
+    this.publicoService.listarCiudades().subscribe({
+    next: (data) => {
+    this.ciudades = data.respuesta;
+    },
+    error: (error) => {
+    console.log("Error al cargar las ciudades");
+    }
+    });
+    }
 
   /**
    * onFileChange
@@ -52,5 +72,23 @@ export class RegistroComponent {
       this.registroClienteDTO.fotoPerfil = this.archivos[0].name;
     }
   }
+
+  public subirImagen() {
+    if (this.archivos != null && this.archivos.length > 0) {
+    const formData = new FormData();
+    formData.append('file', this.archivos[0]);
+    this.imagenService.subir(formData).subscribe({
+    next: data => {
+    this.registroClienteDTO.fotoPerfil = data.respuesta.url;
+    this.alerta = new Alerta("Se ha subido la foto", "success");
+    },
+    error: error => {
+    this.alerta = new Alerta(error.error, "danger");
+    }
+    });
+    } else {
+    this.alerta = new Alerta("Debe seleccionar una imagen y subirla", "danger");
+    }
+    }
 
 }

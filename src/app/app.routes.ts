@@ -30,7 +30,7 @@ import { RegistroAgendaComponent } from './componentes/registro-agenda/registro-
 import { NgModule, Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { AlertaComponent } from './alerta/alerta.component';
+import { AlertaComponent } from './componentes/alerta/alerta.component';
 
 export const routes: Routes = [
     {path: '', component: InicioComponent},
