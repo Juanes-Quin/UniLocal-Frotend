@@ -3,7 +3,6 @@ import { MapaService } from '../../servicios/mapa.service';
 import { Router, RouterModule } from '@angular/router';
 import { RegistroNegocioDTO } from '../../dto/negocio/RegistroNegocioDTO';
 import { NegociosService } from '../../servicios/negocios.service';
-//import { MapaService } from '../../servicios/mapa.service';
 
 
 @Component({
@@ -28,5 +27,11 @@ export class InicioComponent implements OnInit {
       this.registroNegocioDTO.ubicacion.latitud = marcador.lat;
       this.registroNegocioDTO.ubicacion.longitud = marcador.lng;
     });
+  }
+
+  public iraBusqueda(valor:string){
+    if(valor){
+      this.router.navigate(["/busqueda", valor]);
+    }
   }
 }
