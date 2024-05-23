@@ -12,6 +12,7 @@ import { EditarPerfilComponent } from './componentes/editar-perfil/editar-perfil
 import { ReservaComponent } from './componentes/reserva/reserva.component';
 import { RecuperarContrasenaComponent } from './componentes/recuperar-contrasena/recuperar-contrasena.component';
 
+
 //imports de negocio
 import { GestionNegociosComponent } from './componentes/gestion-negocios/gestion-negocios.component';
 import { NegociosComponent } from './componentes/negocios/negocios.component';
@@ -31,6 +32,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AlertaComponent } from './componentes/alerta/alerta.component';
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
+import {LoginGuard} from "./guards/permiso.service";
+import {HistorialRevisionComponent} from "./componentes/historial-revision/historial-revision.component";
+import {RolesGuard} from "./guards/roles.service";
 
 export const routes: Routes = [
     {path: '', component: InicioComponent},
@@ -50,7 +54,17 @@ export const routes: Routes = [
     {path: 'verDetalleNegocio/:codigo', component: VerDetalleNegocioComponent},
     {path: 'busqueda/:texto', component: BusquedaComponent},
 
-    
+    { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
+    { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
+
+    { path: "gestion-negocios", component: GestionNegociosComponent, canActivate: [RolesGuard],
+      data: { expectedRole: ["CLIENTE"] } },
+    { path: "crear-negocio", component: CrearNegocioComponent, canActivate: [RolesGuard], data: {
+        expectedRole: ["CLIENTE"] } },
+    { path: "historial-revisiom", component: HistorialRevisionComponent, canActivate:
+        [RolesGuard], data: { expectedRole: ["MODERADOR"] } },
+
+
     {path: '**', pathMatch: "full", redirectTo: "" }//Se siempre es el ultimo de la lista
 ];
 

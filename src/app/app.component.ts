@@ -16,16 +16,16 @@ export class AppComponent implements OnInit{
 
   isLogged = false;
   email:string = "";
+
   constructor(private tokenService:TokenService) { }
 
-    ngOnInit(): void {
-      this.isLogged = this.tokenService.isLogged();
-      if(this.isLogged){
-        //this.email = this.tokenService.getEmail(); // preguntar 
+  ngOnInit(): void {
+    this.isLogged = this.tokenService.isLogged();
+    if (this.isLogged) {
+      this.email = this.tokenService.getEmail();
     }
   }
-
-  public logout(){
+  public logout() {
     this.tokenService.logout();
   }
 
