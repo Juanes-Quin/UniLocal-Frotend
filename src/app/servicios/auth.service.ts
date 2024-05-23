@@ -15,14 +15,14 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
 
-//login
-public login(loginDTO:SesionDTO):Observable<MensajeDTO>{
-  return this.http.post<MensajeDTO>(`${this.authURL}/login`, loginDTO);
-}
+  //login
+  public login(loginDTO:SesionDTO):Observable<MensajeDTO>{
+    return this.http.post<MensajeDTO>(`${this.authURL}/login`, loginDTO);
+  }
 
-public registrarCliente(RegistroClienteDTO:RegistroClienteDTO):Observable<MensajeDTO>{
-  return this.http.post<MensajeDTO>(`${this.authURL}/registrar-cliente`, RegistroClienteDTO);
-}
+  public registrarCliente(RegistroClienteDTO:RegistroClienteDTO):Observable<MensajeDTO>{
+    return this.http.post<MensajeDTO>(`${this.authURL}/registrar-cliente`, RegistroClienteDTO);
+  }
 
   public loginCliente(loginDTO: SesionDTO): Observable<MensajeDTO> {
     return this.http.post<MensajeDTO>(`${this.authURL}/login-cliente`, loginDTO);

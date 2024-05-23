@@ -11,7 +11,7 @@ import { ItemDetalleClienteDTO } from '../dto/cliente/itemDetalleClienteDTO';
 })
 export class ClienteService {
 
-  private userUrl = "http://localhost:8081/api/clientes";
+  private userUrl = "http://localhost:8080/api/clientes";
 
   constructor(private http: HttpClient) { }
 
@@ -19,11 +19,11 @@ export class ClienteService {
     return this.http.put<MensajeDTO>(`${this.userUrl}/actualizar-perfil-cliente`, actualizarClienteDTO);
   }
 
-  public obtenerCliente (codigo: number): Observable<MensajeDTO> {
+  public obtenerCliente (codigo: string): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.userUrl}/obtener-cliente/${codigo}`);
   }
 
-  public eliminarCuenta(codigo: number): Observable<MensajeDTO> {
+  public eliminarCuenta(codigo: string): Observable<MensajeDTO> {
     return this.http.delete<MensajeDTO>(`${this.userUrl}/eliminar/${codigo}`);
   }
 
@@ -31,7 +31,7 @@ export class ClienteService {
     return this.http.post<MensajeDTO>(`${this.userUrl}/sitios-favoritos`, sitioFavoritoDTO);
   }
 
-  public mostrarFavoritos(codigoCliente: number): Observable<MensajeDTO> {
+  public mostrarFavoritos(codigoCliente: string): Observable<MensajeDTO> {
     //MIS DUDAS CON LA RUTA
     return this.http.get<MensajeDTO>(`${this.userUrl}/obtener-favoritos-cliente/${codigoCliente}`);
   }
@@ -47,6 +47,10 @@ export class ClienteService {
 
   public ItemListaLugaresCreadosDTO(Categoria: any): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.userUrl}/buscar-negocio-categoria/${Categoria}`);
+  }
+
+  public listarCiudades(): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.userUrl}/listar-ciudades`);
   }
 
 

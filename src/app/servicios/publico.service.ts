@@ -18,6 +18,8 @@ providedIn: 'root'
   public listarTiposNegocio(): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.publicoURL}/listar-tipos-negocio`);
   }
+
+  
   
 
 }
