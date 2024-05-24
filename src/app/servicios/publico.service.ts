@@ -19,5 +19,4 @@ providedIn: 'root'
     return this.http.get<MensajeDTO>(`${this.publicoURL}/listar-tipos-negocio`);
   }
 
-
 }

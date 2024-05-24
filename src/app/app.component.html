@@ -10,9 +10,9 @@ justify-content-md-between py-3">
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a routerLink="" class="nav-link px-2 link-secondary">Inicio</a></li>
-            <li><a routerLink="/gestionNegocios" class="nav-link px-2">Gestión negocios</a></li>
-            <li><a routerLink="/actualizarNegocio" class="nav-link px-2">Mis negocios</a></li>
-            <li><a routerLink="/favoritos" class="nav-link px-2">Favoritos</a></li>
+            <li><a routerLink="/gestionNegocios" class="nav-link px-2">Negocios</a></li>
+            <li><a routerLink="/misNegocios" class="nav-link px-2">Mis negocios</a></li>
+          <li><a routerLink="/favoritos" class="nav-link px-2">Favoritos</a></li>
         </ul>
 
       <div class="col-md-3 text-end">
@@ -23,6 +23,10 @@ justify-content-md-between py-3">
         }@else {
           <label class="me-3" >Hola {{email}}</label>
           <button type="button" (click)="logout()" class="btn btn-primary ">Logout</button>
+            //esto se descomenta despues para que se valide que solo
+            //el cliente pueda ver sus negocios
+          //<li><a routerLink="/misNegocios" class="nav-link px-2">Mis negocios</a></li>
+          //<li><a routerLink="/favoritos" class="nav-link px-2">Favoritos</a></li>
         }
       </div>
     </header>

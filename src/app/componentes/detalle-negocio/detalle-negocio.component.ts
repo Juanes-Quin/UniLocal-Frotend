@@ -10,23 +10,28 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './detalle-negocio.component.html',
   styleUrl: './detalle-negocio.component.css'
-  })
-  export class DetalleNegocioComponent {
+})
+export class DetalleNegocioComponent {
   codigoNegocio: string = '';
   negocio: ItemNegocioDTO | undefined;
- 
 
   constructor(private route: ActivatedRoute, private negociosService: NegociosService) {
     this.route.params.subscribe((params) => {
-    this.codigoNegocio = params['codigo'];
-    this.obtenerNegocio();
-});
+      this.codigoNegocio = params['codigo'];
+      this.obtenerNegocio();
+    });
+  }
+
+  public obtenerNegocio() {
+    this.negociosService.obtener(this.codigoNegocio).subscribe(
+      (respuesta: any) => {
+        if (respuesta && respuesta.respuesta) {
+          this.negocio = respuesta.respuesta;
+        }
+      },
+      (error) => {
+        console.error('Error al obtener el negocio:', error);
+      }
+    );
+  }
 }
-public obtenerNegocio() {
-  const negocioConsultado = this.negociosService.obtener(this.codigoNegocio);
-  if (negocioConsultado != undefined) {
-  this.negocio = negocioConsultado;
-  }
-  }
-  
-  }

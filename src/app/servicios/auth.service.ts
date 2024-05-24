@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SesionDTO } from '../dto/cuenta/sesionDTO';
 import { MensajeDTO } from '../dto/MensajeDTO';
-import { Token } from '@angular/compiler';
 import { Observable } from 'rxjs';
 import { RegistroClienteDTO } from '../dto/cliente/registroClienteDTO';
 
@@ -15,14 +14,14 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
 
-//login
-public login(loginDTO:SesionDTO):Observable<MensajeDTO>{
-  return this.http.post<MensajeDTO>(`${this.authURL}/login`, loginDTO);
-}
+  //login
+  public login(loginDTO:SesionDTO):Observable<MensajeDTO>{
+    return this.http.post<MensajeDTO>(`${this.authURL}/login`, loginDTO);
+  }
 
-public registrarCliente(RegistroClienteDTO:RegistroClienteDTO):Observable<MensajeDTO>{
-  return this.http.post<MensajeDTO>(`${this.authURL}/registrar-cliente`, RegistroClienteDTO);
-}
+  public registrarCliente(RegistroClienteDTO:RegistroClienteDTO):Observable<MensajeDTO>{
+    return this.http.post<MensajeDTO>(`${this.authURL}/registrar-cliente`, RegistroClienteDTO);
+  }
 
   public loginCliente(loginDTO: SesionDTO): Observable<MensajeDTO> {
     return this.http.post<MensajeDTO>(`${this.authURL}/login-cliente`, loginDTO);

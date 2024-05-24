@@ -1,1 +1,48 @@
-<p>{{negocio | json}}</p>
+<div class="card negocio-detalle">
+    <div class="card-header ps-5 pt-4 pb-4">
+      <h5 class="mb-0"><i class="fa-solid fa-store me-3"></i>Detalle del Negocio</h5>
+    </div>
+  
+    <div *ngIf="negocio" class="card-body p-5">
+      <div class="negocio-info">
+        <div class="info-item">
+          <label>Código:</label>
+          <p>{{negocio.codigoNegocio}}</p>
+        </div>
+  
+        <div class="info-item">
+          <label>Nombre:</label>
+          <p>{{negocio.nombre}}</p>
+        </div>
+  
+        <div class="info-item">
+          <label>Imagen Destacada:</label>
+          <img [src]="negocio.imagenDestacada" alt="Imagen Destacada">
+        </div>
+  
+        <div class="info-item">
+          <label>Tipo de Negocio:</label>
+          <p>{{negocio.tipoNegocio}}</p>
+        </div>
+  
+        <div class="info-item">
+          <label>Ubicación:</label>
+          <p>{{negocio.ubicacion}}</p>
+        </div>
+  
+        <div class="info-item">
+          <label>Calificación Promedio:</label>
+          <p>{{negocio.calificacionPromedio}}</p>
+        </div>
+  
+        <div class="info-item">
+          <label>Estado del Negocio:</label>
+          <p>{{negocio.estadoNegocio}}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!negocio" class="card-body p-5">
+      <p>No se encontró el negocio.</p>
+    </div>
+  </div>
+  

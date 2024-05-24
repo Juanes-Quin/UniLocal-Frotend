@@ -35,11 +35,12 @@ import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
 import {LoginGuard} from "./guards/permiso.service";
 import {HistorialRevisionComponent} from "./componentes/historial-revision/historial-revision.component";
 import {RolesGuard} from "./guards/roles.service";
+import {MisNegociosComponent} from "./componentes/mis-negocios/mis-negocios.component";
 
 export const routes: Routes = [
     {path: '', component: InicioComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'registro', component: RegistroComponent},
+    {path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
+    {path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
     {path: 'recuperarContrasena', component: RecuperarContrasenaComponent},
     {path: 'agenda', component: AgendaComponent},
     {path: 'verDetalleAgenda', component: VerDetalleAgendaComponent},
@@ -48,20 +49,23 @@ export const routes: Routes = [
     {path: 'editarPerfil', component: EditarPerfilComponent},
     {path: 'reserva', component: ReservaComponent},
     {path: 'gestionNegocios', component: GestionNegociosComponent},
+
     {path: 'negocios', component: NegociosComponent},
     {path: 'actualizarNegocio', component: ActualizarNegocioComponent},
-    {path: 'crearNegocio', component: CrearNegocioComponent},
+  {path: 'misNegocios', component: MisNegociosComponent},
+    //esta comentado mientras se diseña, despues es necesario descomentarlo
+    //para que solo los clientes puedan ver sus negocios
+    //{path: 'misNegocios', component: MisNegociosComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] } },
+
+
+    {path: 'crearNegocio', component: CrearNegocioComponent, canActivate: [RolesGuard], data: {
+        expectedRole: ["CLIENTE"] } },
+
     {path: 'verDetalleNegocio/:codigo', component: VerDetalleNegocioComponent},
     {path: 'busqueda/:texto', component: BusquedaComponent},
 
-    { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
-    { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
 
-    { path: "gestion-negocios", component: GestionNegociosComponent, canActivate: [RolesGuard],
-      data: { expectedRole: ["CLIENTE"] } },
-    { path: "crear-negocio", component: CrearNegocioComponent, canActivate: [RolesGuard], data: {
-        expectedRole: ["CLIENTE"] } },
-    { path: "historial-revisiom", component: HistorialRevisionComponent, canActivate:
+    { path: "historial-revision", component: HistorialRevisionComponent, canActivate:
         [RolesGuard], data: { expectedRole: ["MODERADOR"] } },
 
 
