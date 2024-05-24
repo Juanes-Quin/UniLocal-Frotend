@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SesionDTO } from '../dto/cuenta/sesionDTO';
 import { MensajeDTO } from '../dto/MensajeDTO';
-import { Token } from '@angular/compiler';
 import { Observable } from 'rxjs';
 import { RegistroClienteDTO } from '../dto/cliente/registroClienteDTO';
 

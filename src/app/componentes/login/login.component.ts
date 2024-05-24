@@ -54,8 +54,8 @@ export class LoginComponent {
     },
     error: error => {
     this.alerta = new Alerta(error.error.respuesta, "danger" );
+    }
+    });
   }
-});
-}
 
 }
