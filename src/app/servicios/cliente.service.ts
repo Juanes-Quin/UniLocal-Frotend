@@ -49,6 +49,10 @@ export class ClienteService {
     return this.http.get<MensajeDTO>(`${this.userUrl}/buscar-negocio-categoria/${Categoria}`);
   }
 
+  public obtenerReserva(idCliente: string): Observable<MensajeDTO>{
+    return this.http.get<MensajeDTO>(`${this.userUrl}//obtener-reserva/{idNegocio}/{idCliente}/${idCliente}`);
+  }
+
 
  // public buscarNegocioNombre(FiltroBusquedaDTO: ): Observable<MensajeDTO> {
    // return this.http.get<MensajeDTO>(`${this.userUrl}/buscar-negocio-nombre/`, filtrobusquedaDTO );

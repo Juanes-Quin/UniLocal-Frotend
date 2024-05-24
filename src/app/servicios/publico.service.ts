@@ -7,7 +7,7 @@ providedIn: 'root'
 })
   export class PublicoService {
 
-  private publicoURL = "http://localhost:8080/api/publico";
+  private publicoURL = "http://localhost:8080/api/cuenta";
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +18,6 @@ providedIn: 'root'
   public listarTiposNegocio(): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.publicoURL}/listar-tipos-negocio`);
   }
-  
+
 
 }

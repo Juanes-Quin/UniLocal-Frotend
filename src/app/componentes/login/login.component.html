@@ -1,38 +1,39 @@
-<body>
+<body class="bg-primary">
     <form #formulario="ngForm">
 
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0"><i class="fa-solid fa-user-plus me-3"></i>Inicio de Sesión</h5>
+        <div class="col-lg-5">
+          <div class="card shadow-lg border-0 rounded-lg mt-5">
+            <div>
+                <h5 class="text-center font-weight-light my-4"><i class="text-center font-weight-light my-4"></i>Inicio de Sesión</h5>
             </div>
+
             <div class="card-body">
 
                 <form #formulario="ngForm">
 
-                    <div class="form-group">
-                        <label for="correo">Usuario o Correo:</label>
-                        <input #correo="ngModel" type="email" email="true" name="email" class="form-control" [(ngModel)]="sesionDTO.email" required>
+                    <div class="form-floating mb-3">
+                      <input #correo="ngModel" type="email" email="true" name="email" class="form-control"
+                       placeholder="name@example.com" [(ngModel)]="sesionDTO.email" required>
+                        <label for="correo">Correo</label>
                     </div>
 
-                    <div class="form-group">
-                        <label for="contrasena">Contraseña:</label>
-                        <input #contrasena="ngModel" type="password" name="password" class="form-control" [(ngModel)]="sesionDTO.password" required>
+                    <div class="form-floating mb-3">
+                        <input #contrasena="ngModel" type="password" name="password" class="form-control"
+                        placeholder="Password" [(ngModel)]="sesionDTO.password" required>
+                        <label for="contrasena">Contraseña</label>
                     </div>
 
-                    <div class="mb-3">
-                        <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid" (click)="login()">
-              <i class="fa-solid fa-circle-plus me-1"></i>Entrar</button>
-                    </div>
+                    <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                      <a class="small" [routerLink]="['/recuperarContrasena']">Recuperar Contraseña</a>
 
-                    <div class="mb-3 recuperar-contrasena">
+                      <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid" (click)="login()">
+                        <i class="fa-solid fa-circle-plus me-1"></i>Entrar</button>
 
-                        <button class="btn btn-outline-light me-2" type="button">
-              <i class="fa-solid fa-key me-1" [routerLink]="['/recuperarContrasena']"></i>Recuperar Contraseña
-            </button>
                     </div>
 
                 </form>
             </div>
+          </div>
         </div>
     </form>
 </body>
