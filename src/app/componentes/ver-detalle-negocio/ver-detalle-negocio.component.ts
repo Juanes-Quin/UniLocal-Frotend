@@ -3,16 +3,18 @@ import { ItemNegocioDTO } from '../../dto/negocio/item-negocio-dto';
 import { ActivatedRoute } from '@angular/router';
 import { NegociosService } from '../../servicios/negocios.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { TokenService } from '../../servicios/token.service';
 
 @Component({
   selector: 'app-ver-detalle-negocio',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './ver-detalle-negocio.component.html',
   styleUrl: './ver-detalle-negocio.component.css'
 })
 export class VerDetalleNegocioComponent {
+
   codigoNegocio: string = '';
   negocio: ItemNegocioDTO | undefined;
   constructor(private route: ActivatedRoute, private negociosService: NegociosService, private tokenService: TokenService) {

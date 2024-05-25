@@ -1,1 +1,54 @@
-<p>registro-agenda works!</p>
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header">
+                                    <h5 class="text-center font-weight-light my-4">
+                                        <i class="fa-solid fa-calendar-plus me-3"></i>Registro de una nueva agenda
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <form #f="ngForm">
+                                        <div class="mb-3">
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputCodigoNegocio" type="text" placeholder="Ingrese el código de negocio"
+                                                    maxlength="30" required="true" name="codigoNegocio" [(ngModel)]="registroAgendaDTO.codigoNegocio">
+                                                <label for="inputCodigoNegocio">Código de Negocio</label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputTematica" type="text" placeholder="Ingrese la temática"
+                                                    maxlength="50" required="true" name="tematica" [(ngModel)]="registroAgendaDTO.tematica">
+                                                <label for="inputTematica">Temática</label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="form-floating mb-3">
+                                                <textarea class="form-control" id="inputDescripcion" placeholder="Ingrese la descripción"
+                                                    maxlength="250" required="true" name="descripcion" [(ngModel)]="registroAgendaDTO.descripcion" style="height: 150px;"></textarea>
+                                                <label for="inputDescripcion">Descripción</label>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4 mb-0">
+                                            <div class="d-grid">
+                                                <button type="submit" class="btn btn-primary" [disabled]="f.invalid" (click)="registrarAgenda()">Registrar Agenda</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer text-center py-3">
+                                    <div class="small"><a [routerLink]="['/verDetalleAgenda']">Ver todas las agendas</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>

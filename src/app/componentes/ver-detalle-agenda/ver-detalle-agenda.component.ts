@@ -14,11 +14,11 @@ import { ClienteService } from '../../servicios/cliente.service';
   styleUrl: './ver-detalle-agenda.component.css'
 })
 export class VerDetalleAgendaComponent {
-  detalleAgendaDTO: DetalleAgendaDTO;
+  detalleAgendaDTO: DetalleAgendaDTO [];
   verAgenda: String [];
 
   constructor(private clienteServicie: ClienteService,private authService: AuthService, private tokenService: TokenService){
-    this.detalleAgendaDTO = new DetalleAgendaDTO();
+    this.detalleAgendaDTO = [];
     this.verAgenda = [];
   }
 
@@ -31,7 +31,7 @@ export class VerDetalleAgendaComponent {
     let codigo = this.tokenService.getCodigo();
     this.clienteServicie.obtenerReserva(codigo).subscribe({
         next: (data) => {
-        this.verAgenda = data.respuesta;
+        this.detalleAgendaDTO = data.respuesta;
       },
         error: (error) => {
         console.log("Error al cargar las ciudades");

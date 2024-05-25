@@ -81,7 +81,7 @@
                                                 <!-- Lógica para mostrar si las contraseñas no coinciden -->
                                                 @if (!sonIguales()) {
                                                   <p>Las contraseñas no coinciden</p>}
-                                                  
+
                                                 <button type="submit" class="btn btn-primary" [disabled]="f.invalid || !sonIguales()" (click)="registrar()">Registrarse</button>
                                             </div>
                                         </div>

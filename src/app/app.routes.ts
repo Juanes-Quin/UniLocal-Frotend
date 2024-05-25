@@ -19,6 +19,7 @@ import { NegociosComponent } from './componentes/negocios/negocios.component';
 import { ActualizarNegocioComponent } from './componentes/actualizar-negocio/actualizar-negocio.component';
 import { CrearNegocioComponent } from './componentes/crear-negocio/crear-negocio.component';
 import { VerDetalleNegocioComponent } from './componentes/ver-detalle-negocio/ver-detalle-negocio.component';
+import { DetalleNegocioComponent } from './componentes/detalle-negocio/detalle-negocio.component';
 
 //imports de la agenda
 import { AgendaComponent } from './componentes/agenda/agenda.component';
@@ -42,17 +43,19 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
     {path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
     {path: 'recuperarContrasena', component: RecuperarContrasenaComponent},
+    //LOS DEL CLIENTE
     {path: 'agenda', component: AgendaComponent},
     {path: 'verDetalleAgenda', component: VerDetalleAgendaComponent},
     {path: 'registroAgenda', component: RegistroAgendaComponent},
     {path: 'favoritos', component: FavoritosClienteComponent},
     {path: 'editarPerfil', component: EditarPerfilComponent},
+    //LOS DEL NEGOCIO
     {path: 'reserva', component: ReservaComponent},
     {path: 'gestionNegocios', component: GestionNegociosComponent},
-
     {path: 'negocios', component: NegociosComponent},
     {path: 'actualizarNegocio', component: ActualizarNegocioComponent},
-  {path: 'misNegocios', component: MisNegociosComponent},
+    {path: 'detalleNegocio', component: DetalleNegocioComponent},
+    {path: 'misNegocios', component: MisNegociosComponent},
     //esta comentado mientras se diseña, despues es necesario descomentarlo
     //para que solo los clientes puedan ver sus negocios
     //{path: 'misNegocios', component: MisNegociosComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] } },

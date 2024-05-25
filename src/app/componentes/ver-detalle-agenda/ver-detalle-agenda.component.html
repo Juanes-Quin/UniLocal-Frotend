@@ -1,8 +1,7 @@
 <body>
   <form #formulario="ngForm">
-    <!--
+    
     <div class="card" *ngFor="let agenda of detalleAgendaDTO">
-      -->
       <div class="card-header">
 
         <h5 class="mb-0"><i class="fa-solid fa-calendar me-3"></i>Ver Agenda</h5>
@@ -17,12 +16,12 @@
 
         <div class="form-group">
           <label for="tematica">Temática:</label>
-          <input #tematica="ngModel" type="text" name="tematica" class="form-control" [(ngModel)]="tematica" required>
+          <input #tematica="ngModel" type="text" name="tematica" class="form-control" [(ngModel)]="agenda.tematica" required>
         </div>
 
         <div class="form-group">
           <label for="descripcion">Descripción:</label>
-          <textarea #descripcion="ngModel" name="descripcion" class="form-control" [(ngModel)]="descripcion" required></textarea>
+          <textarea #descripcion="ngModel" name="descripcion" class="form-control" [(ngModel)]="agenda.descripcion" required></textarea>
         </div>
 
        <!--
@@ -33,5 +32,6 @@
         </div>
       -->
       </div>
+    </div>
   </form>
 </body>
