@@ -5,7 +5,7 @@ import { ActualizarClienteDTO } from '../../dto/cliente/actualizarclienteDTO';
 import { CambioPasswordDTO } from '../../dto/cuenta/cambioPasswordDTO';
 import { TokenService } from '../../servicios/token.service';
 import { ImagenService } from '../../servicios/imagen.service';
-import { Alerta } from '../../dto/alerta';
+import { Alerta } from '../../model/alerta';
 import { ClienteService } from '../../servicios/cliente.service';
 
 @Component({
@@ -54,8 +54,7 @@ export class EditarPerfilComponent {
     this.ciudades = ["ARMENIA", "PEREIRA", "CALI", "MEDELLIN", "BOGOTA", "BUCARAMANGA", "CARTAGENA"];
   }
 
-  /*
-  PENDIENTE
+  
 
   public cambiarContrasena() {
     this.clienteService.cambiarPassword(this.cambioPasswordDTO).subscribe({
@@ -68,11 +67,10 @@ export class EditarPerfilComponent {
     });
   }
 
-  */
 
-  /*public eliminarCuenta (){
+  public eliminarCuenta (){
     let codigo = this.tokenService.getCodigo();
-    this.clienteService.eliminarCuenta(codigo).subscribe({
+    this.clienteService.eliminarCliente(codigo).subscribe({
       next: data => {
         this.actualizarClienteDTO.id = data.respuesta;
       },
@@ -80,7 +78,7 @@ export class EditarPerfilComponent {
         console.log(error);
       }
     });
-  }*/
+  }
 
   onlyNumberKey(event: any) {
     const charCode = event.which ? event.which : event.keyCode;

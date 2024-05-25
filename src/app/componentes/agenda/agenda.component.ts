@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { RegistroAgendaDTO } from '../../dto/agenda/registroAgendaDTO';
-import { DetalleAgendaDTO } from '../../dto/agenda/detalleAgendaDTO';
+import { DetalleAgendaDTO } from '../../dto/agenda/detalle-agenda-dto';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TokenService } from '../../servicios/token.service';
 import { AuthService } from '../../servicios/auth.service';
+import { RegistroAgendaDTO } from '../../dto/agenda/registro-agenda-dto';
 
 
 @Component({

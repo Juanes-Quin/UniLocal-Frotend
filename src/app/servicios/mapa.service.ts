@@ -58,7 +58,7 @@ export class MapaService {
           <img src="${negocio.imagenDestacada}" alt="Imagen del negocio">
           <h3>${negocio.nombre}</h3>
           <p>Estado: ${negocio.estadoNegocio}</p>
-          <p>Tipo: ${negocio.tipoNegocio}</p>
+          <p>Tipo: ${negocio.categoriaNegocio}</p>
         </div>
 `;
       new mapboxgl.Marker()

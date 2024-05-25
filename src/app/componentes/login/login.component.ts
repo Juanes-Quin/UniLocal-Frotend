@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SesionDTO } from "../../dto/cuenta/sesionDTO";
 import { TokenService } from '../../servicios/token.service';
 import { AuthService } from '../../servicios/auth.service';
-import { Alerta } from '../../dto/alerta';
+import { Alerta } from '../../model/alerta';
 import { AlertaComponent } from "../alerta/alerta.component";
 
 
@@ -48,7 +48,7 @@ export class LoginComponent {
   }
 
   public login() {
-    this.authService.loginCliente(this.sesionDTO).subscribe({
+    this.authService.login(this.sesionDTO).subscribe({
     next: data => {
       this.tokenService.login(data.respuesta.token);
     },

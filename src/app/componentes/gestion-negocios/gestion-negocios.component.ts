@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ItemNegocioDTO } from '../../dto/negocio/item-negocio-dto';
-import { NegociosService } from '../../servicios/negocios.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PublicoService } from '../../servicios/publico.service';
 import { TokenService } from '../../servicios/token.service';
+import { ClienteService } from '../../servicios/cliente.service';
 
 @Component({
   selector: 'app-gestion-negocios',
@@ -18,7 +18,7 @@ export class GestionNegociosComponent {
 
   negocios: ItemNegocioDTO[];
 
-constructor(private negocioService: NegociosService, private publicoService: PublicoService, private tokenService: TokenService) {
+constructor(private clienteService: ClienteService, private publicoService: PublicoService, private tokenService: TokenService) {
 this.negocios = [];
 this.listarNegocios();
 }
@@ -30,7 +30,7 @@ this.negocios = this.negocioService.listar();
 
 public listarNegocios(){
   const codigoCliente = this.tokenService.getCodigo();
-  this.negocioService.listarNegociosPropietario(codigoCliente).subscribe({
+  this.clienteService.listarNegociosPropietario(codigoCliente).subscribe({
   next: (data) => {
   this.negocios = data.respuesta;
   },

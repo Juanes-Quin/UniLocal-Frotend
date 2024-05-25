@@ -1,4 +1,4 @@
-import { Ubicacion } from "../ubicacion";
+import { Ubicacion } from "../../model/ubicacion";
 
 export class ItemNegocioDTO {
 
@@ -6,7 +6,7 @@ export class ItemNegocioDTO {
     public codigoNegocio: string = '',
     public nombre: string = '',
     public imagenDestacada: string = '',
-    public tipoNegocio: string = '',
+    public categoriaNegocio: string = '',
     public ubicacion: Ubicacion = new Ubicacion(),
     public calificacionPromedio: number = 0,
     public estadoNegocio:string = ''

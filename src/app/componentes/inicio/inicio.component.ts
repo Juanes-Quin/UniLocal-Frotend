@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MapaService } from '../../servicios/mapa.service';
 import { Router, RouterModule } from '@angular/router';
-import { RegistroNegocioDTO } from '../../dto/negocio/RegistroNegocioDTO';
-import { NegociosService } from '../../servicios/negocios.service';
+import { ClienteService } from '../../servicios/cliente.service';
 
 
 @Component({
@@ -15,7 +14,7 @@ import { NegociosService } from '../../servicios/negocios.service';
 
 export class InicioComponent implements OnInit {
 
-  constructor(private mapaService: MapaService, private router: Router, private negociosService: NegociosService) { 
+  constructor(private mapaService: MapaService, private router: Router, private clienteService: ClienteService) { 
     
   }
   

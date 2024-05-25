@@ -2,21 +2,55 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MensajeDTO } from '../dto/MensajeDTO';
 import { HttpClient } from '@angular/common/http';
+import { LinkRecuperacionDTO } from '../dto/cuenta/link-recuperacion-dto';
+import { BusquedaNombreDTO } from '../dto/BusquedaNombreDTO';
+import { BusquedaDistanciaDTO } from '../dto/busqueda.distancia-dto';
 @Injectable({
 providedIn: 'root'
 })
   export class PublicoService {
 
-  private publicoURL = "http://localhost:8080/api/cuenta";
+  private publicUrl = "http://localhost:8080/api/publico";
 
   constructor(private http: HttpClient) { }
 
-  public listarCiudades(): Observable<MensajeDTO> {
-    return this.http.get<MensajeDTO>(`${this.publicoURL}/listar-ciudades`);
-  }
+    listarCiudades(): Observable<MensajeDTO> {
+      return this.http.get<MensajeDTO>(`${this.publicUrl}/listar-ciudades`);
+    }
 
-  public listarTiposNegocio(): Observable<MensajeDTO> {
-    return this.http.get<MensajeDTO>(`${this.publicoURL}/listar-tipos-negocio`);
-  }
+    listarCategoriaNegocio(): Observable<MensajeDTO> {
+      return this.http.get<MensajeDTO>(`${this.publicUrl}/listar-categoria-negocio`);
+    }
 
+    enviarLinkRecuperacionCliente(linkRecuperacionDTO: LinkRecuperacionDTO): Observable<MensajeDTO> {
+      return this.http.get<MensajeDTO>(`${this.publicUrl}/enviar-link-recuperacion-password-cliente/${linkRecuperacionDTO}`);
+    }
+
+    enviarLinkRecuperacionModerador(linkRecuperacionDTO: LinkRecuperacionDTO): Observable<MensajeDTO> {
+      return this.http.get<MensajeDTO>(`${this.publicUrl}/enviar-link-recuperacion-password-moderador/${linkRecuperacionDTO}`);
+    }
+
+    buscarNegocioNombre(busquedaNombreDTO: BusquedaNombreDTO): Observable<MensajeDTO> {
+      return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-nombre/${busquedaNombreDTO}`);
+    }
+
+    /*buscarNegocioCategoria(categoria: CategoriaNegocio): Observable<MensajeDTO> {
+      return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-categoria/${categoria}`);
+    }*/
+
+    buscarNegocioDistancia(busquedaDistanciaDTO: BusquedaDistanciaDTO): Observable<MensajeDTO> {
+      return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-distancia/${busquedaDistanciaDTO}`);
+    }
+
+    listarComentariosNegocio(idNegocio: string): Observable<MensajeDTO> {
+      return this.http.get<MensajeDTO>(`${this.publicUrl}/listar-comentarios-negocio/${idNegocio}`);
+    }
+
+    /*filtrarPorEstado(estadoNegocio: EstadoNegocio): Observable<MensajeDTO> {
+      return this.http.get<MensajeDTO>(`${this.publicUrl}/filtar-estado/${estadoNegocio}`);
+    }*/
+
+    buscarNegocio(codigoNegocio: string): Observable<MensajeDTO> {
+      return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio/${codigoNegocio}`);
+    }
 }

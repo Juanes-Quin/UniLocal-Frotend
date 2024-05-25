@@ -23,9 +23,4 @@ export class AuthService {
     return this.http.post<MensajeDTO>(`${this.authURL}/registrar-cliente`, RegistroClienteDTO);
   }
 
-  public loginCliente(loginDTO: SesionDTO): Observable<MensajeDTO> {
-    return this.http.post<MensajeDTO>(`${this.authURL}/login-cliente`, loginDTO);
-  }
-
-
 }

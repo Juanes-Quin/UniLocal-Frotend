@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ItemNegocioDTO } from '../../dto/negocio/item-negocio-dto';
-import { NegociosService } from '../../servicios/negocios.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PublicoService } from '../../servicios/publico.service';
 import { TokenService } from '../../servicios/token.service';
+import { ClienteService } from '../../servicios/cliente.service';
 @Component({
   selector: 'app-mis-negocios',
   standalone: true,
@@ -17,7 +17,7 @@ export class MisNegociosComponent {
   seleccionados: ItemNegocioDTO[];
   textoBtnEliminar: string;
 
-  constructor(private negocioService: NegociosService, private publicoService: PublicoService, private tokenService: TokenService) {
+  constructor(private clienteService: ClienteService, private publicoService: PublicoService, private tokenService: TokenService) {
     this.negocios = [];
     this.seleccionados = [];
     this.textoBtnEliminar = "Eliminar";
@@ -53,7 +53,7 @@ export class MisNegociosComponent {
 
   public borrarNegocios() {
     this.seleccionados.forEach(n => {
-      this.negocioService.eliminar(n.codigoNegocio);
+      this.clienteService.eliminarNegocio(n.codigoNegocio);
       this.negocios = this.negocios.filter(negocio => negocio.codigoNegocio !== n.codigoNegocio);
     });
     this.seleccionados = [];
@@ -62,7 +62,7 @@ export class MisNegociosComponent {
 
   public listarNegocios() {
     const codigoCliente = this.tokenService.getCodigo();
-    this.negocioService.listarNegociosPropietario(codigoCliente).subscribe({
+    this.clienteService.listarNegociosPropietario(codigoCliente).subscribe({
       next: (data) => {
         this.negocios = data.respuesta;
       },

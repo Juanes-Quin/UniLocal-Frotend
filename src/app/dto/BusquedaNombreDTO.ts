@@ -1,6 +1,6 @@
 export class BusquedaNombreDTO {
     constructor(
-      public codigonegocio: string = '',
+      public codigoNegocio: string = '',
       public nombre: string = ''
     ) {}
   }

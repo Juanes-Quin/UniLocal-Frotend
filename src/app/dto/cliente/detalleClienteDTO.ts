@@ -4,7 +4,6 @@ export class DetalleClienteDTO {
         public nombre: string = '',
         public fotoPerfil: string = '',
         public nickname: string = '',
-        public password: string = '',
         public email: string = '',
         public ciudadResidencia: string = ''
     ) { }

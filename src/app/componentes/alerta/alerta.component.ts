@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Alerta } from '../../dto/alerta';
+import { Alerta } from '../../model/alerta';
 
 @Component({
   selector: 'app-alerta',

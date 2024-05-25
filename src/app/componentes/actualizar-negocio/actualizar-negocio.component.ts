@@ -7,7 +7,7 @@ import { AuthService } from '../../servicios/auth.service';
 import { ImagenService } from '../../servicios/imagen.service';
 import { ModeradorService } from '../../servicios/moderador.service';
 import { ClienteService } from '../../servicios/cliente.service';
-import { Alerta } from '../../dto/alerta';
+import { Alerta } from '../../model/alerta';
 
 @Component({
   selector: 'app-actualizar-negocio',

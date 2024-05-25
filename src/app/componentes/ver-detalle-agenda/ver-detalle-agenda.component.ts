@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DetalleAgendaDTO } from '../../dto/agenda/detalleAgendaDTO';
+import { DetalleAgendaDTO } from '../../dto/agenda/detalle-agenda-dto';
 import { AuthService } from '../../servicios/auth.service';
 import { TokenService } from '../../servicios/token.service';
 import { ClienteService } from '../../servicios/cliente.service';
+import { IDClienteYNegocioDTO } from '../../dto/negocio/IDClienteYNegocioDTO';
 
 @Component({
   selector: 'app-ver-detalle-agenda',
@@ -16,8 +17,9 @@ import { ClienteService } from '../../servicios/cliente.service';
 export class VerDetalleAgendaComponent {
   detalleAgendaDTO: DetalleAgendaDTO [];
   verAgenda: String [];
+  
 
-  constructor(private clienteServicie: ClienteService,private authService: AuthService, private tokenService: TokenService){
+  constructor(private clienteService: ClienteService,private authService: AuthService, private tokenService: TokenService){
     this.detalleAgendaDTO = [];
     this.verAgenda = [];
   }
@@ -27,9 +29,9 @@ export class VerDetalleAgendaComponent {
     console.log('Agenda guardada', agenda);
   }
 
-  private cargarAgenda() {
+  /*private cargarAgenda() {
     let codigo = this.tokenService.getCodigo();
-    this.clienteServicie.obtenerReserva(codigo).subscribe({
+    this.clienteService.obtenerReserva(idCliente).subscribe({
         next: (data) => {
         this.detalleAgendaDTO = data.respuesta;
       },
@@ -37,6 +39,6 @@ export class VerDetalleAgendaComponent {
         console.log("Error al cargar las ciudades");
       }
     });
-    }
+  }*/
 
 }

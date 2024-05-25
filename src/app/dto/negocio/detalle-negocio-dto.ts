@@ -1,16 +1,16 @@
 import { Horario } from "../../model/horario";
 import { Ubicacion } from "../../model/ubicacion";
 
-export class RegistroNegocioDTO{
+export class DetalleNegocioDTO {
     constructor(
         public nombre: string = '',
         public descripcion: string = '',
-        public horarios: Horario[] = [],
-        public telefono: string | string[] = [],
-        public categoriaNegocio: string = '',
-        public urlFoto: String[] = [],
+        public telefonos: string | string[] = [],
         public ubicacion: Ubicacion = new Ubicacion(),
-        public codigoPropietario: string = ''
-
-    ){}
+        public horarios: Horario[] = [],
+        public categoriaNegocio: string = '',
+        public listaImagenes: string = '',
+        public calificaciones: number = 0
+    ) {
+    }
 }

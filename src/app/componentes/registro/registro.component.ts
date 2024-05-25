@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { PublicoService } from '../../servicios/publico.service';
 import { AuthService } from '../../servicios/auth.service';
-import { Alerta } from '../../dto/alerta';
+import { Alerta } from '../../model/alerta';
 import { ImagenService } from '../../servicios/imagen.service';
 import { Route, RouterModule } from '@angular/router';
 

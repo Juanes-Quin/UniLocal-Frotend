@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { RegistroAgendaDTO } from '../../dto/agenda/registroAgendaDTO';
 import { ClienteService } from '../../servicios/cliente.service';
 import { TokenService } from '../../servicios/token.service';
 import { AuthService } from '../../servicios/auth.service';
+import { RegistroAgendaDTO } from '../../dto/agenda/registro-agenda-dto';
 
 @Component({
   selector: 'app-registro-agenda',

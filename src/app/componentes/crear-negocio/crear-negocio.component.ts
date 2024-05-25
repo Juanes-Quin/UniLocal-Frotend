@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { RegistroNegocioDTO } from '../../dto/negocio/RegistroNegocioDTO';
-import { NegociosService } from '../../servicios/negocios.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Horario } from '../../dto/Horario';
+import { Horario } from '../../model/horario';
+import { ClienteService } from '../../servicios/cliente.service';
 
 @Component({
   selector: 'app-crear-negocio',
@@ -17,14 +17,14 @@ export class CrearNegocioComponent {
   horarios: Horario[];
   archivos!: FileList[];
 
-  constructor(private negociosService: NegociosService) {
+  constructor(private clienteService: ClienteService) {
     this.registroNegocioDTO = new RegistroNegocioDTO();
     this.horarios = [new Horario()];
   }
 
   public crearNegocio() {
     this.registroNegocioDTO.horarios = this.horarios;
-    this.negociosService.crear(this.registroNegocioDTO);
+    this.clienteService.crearNegocio(this.registroNegocioDTO);
     console.log(this.registroNegocioDTO);
   }
 
