@@ -30,8 +30,6 @@ import { RegistroAgendaComponent } from './componentes/registro-agenda/registro-
 //modules
 import { NgModule, Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
-import { AlertaComponent } from './componentes/alerta/alerta.component';
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
 import {LoginGuard} from "./guards/permiso.service";
 import {HistorialRevisionComponent} from "./componentes/historial-revision/historial-revision.component";
@@ -72,7 +70,7 @@ export const routes: Routes = [
         [RolesGuard], data: { expectedRole: ["MODERADOR"] } },
 
 
-    {path: '**', pathMatch: "full", redirectTo: "" }//Se siempre es el ultimo de la lista
+    {path: '**', pathMatch: "full", redirectTo: "" }//siempre es el ultimo de la lista
 ];
 
 @NgModule({
