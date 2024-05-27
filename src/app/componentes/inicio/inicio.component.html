@@ -1,11 +1,38 @@
-<form role="search" (submit)="iraBusqueda(textoBusqueda.value)">
-    <div class="input-group">
-    <input #textoBusqueda type="search" class="form-control" placeholder="Buscar..."
-    aria-label="Search">
-    <button type="button" class="btn btn-primary ">
-        <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
+<div class="container-fluid"> <!-- Contenedor que ocupa todo el ancho disponible -->
+  <div class="row">
+    <div class="col-md-10 col-sm-12 "> <!-- Ancho del campo de búsqueda -->
+      <form role="search" (submit)="iraBusqueda(textoBusqueda.value)">
+        <div class="input-group">
+          <input #textoBusqueda type="search" class="form-control" placeholder="Buscar..." aria-label="Search">
+          <button type="button" class="btn btn-primary">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </form>
     </div>
-</form>
+    <div class="col-md-2 col-sm-12 d-flex justify-content-center align-items-center"> <!-- Ancho del botón de filtros -->
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-filter"></i> Filtros
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <h6 class="dropdown-header">Categorias</h6>
+          <!-- Lista desplegable para categorías -->
+          <a class="dropdown-item" href="#">Categoria 1</a>
+          <a class="dropdown-item" href="#">Categoria 2</a>
+          <a class="dropdown-item" href="#">Categoria 3</a>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Estado</h6>
+          <!-- Lista desplegable para estado -->
+          <a class="dropdown-item" href="#">Estado 1</a>
+          <a class="dropdown-item" href="#">Estado 2</a>
+          <a class="dropdown-item" href="#">Estado 3</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <div id="mapa" ></div>
