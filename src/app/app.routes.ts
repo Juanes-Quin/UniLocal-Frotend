@@ -58,7 +58,7 @@ export const routes: Routes = [
     {path: 'actualizarNegocio', component: ActualizarNegocioComponent},
     {path: 'detalleNegocio/:codigo', component: DetalleNegocioComponent},
     {path: 'misNegocios/:codigo', component: MisNegociosComponent},
-    
+
     //esta comentado mientras se diseña, despues es necesario descomentarlo
     //para que solo los clientes puedan ver sus negocios
     //{path: 'misNegocios', component: MisNegociosComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] } },
@@ -68,16 +68,14 @@ export const routes: Routes = [
         expectedRole: ["CLIENTE"] } }*/
     {path: 'crearNegocio', component: CrearNegocioComponent},
 
-<<<<<<< HEAD
-    {path: 'detalleNegocio/:codigo', component: VerDetalleNegocioComponent},
-    {path: 'busqueda/:texto', component: BusquedaComponent},
 
-=======
+    {path: 'detalleNegocio/:codigo', component: VerDetalleNegocioComponent},
+
     {path: 'verDetalleNegocio/:codigo', component: VerDetalleNegocioComponent},
     {path: 'busquedaNegocioNombre/:texto', component: BusquedaNegocioNombreComponent},
     {path: 'busquedaNegocioCategoria/:texto', component: BusquedaNegocioCategoriaComponent},
     {path: 'busquedaNegocioEstado/:texto', component: BusquedaNegocioEstadoComponent},
->>>>>>> d8f6b85c15ea455afb4abd944b50d39dfee8bed4
+
 
     { path: "historial-revision/:codigo", component: HistorialRevisionComponent, canActivate:
         [RolesGuard], data: { expectedRole: ["MODERADOR"] } },
