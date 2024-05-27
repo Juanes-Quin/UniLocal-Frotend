@@ -4,7 +4,9 @@ import { MensajeDTO } from '../dto/MensajeDTO';
 import { HttpClient } from '@angular/common/http';
 import { LinkRecuperacionDTO } from '../dto/cuenta/link-recuperacion-dto';
 import { BusquedaNombreDTO } from '../dto/BusquedaNombreDTO';
-import { BusquedaDistanciaDTO } from '../dto/busqueda.distancia-dto';
+import { BusquedaDistanciaDTO } from '../dto/BusquedaDistanciaDTO';
+import {CategoriaNegocioDTO} from "../dto/CategoriaNegocioDTO";
+import {EstadoNegocioDTO} from "../dto/EstadoNegocioDTO";
 @Injectable({
 providedIn: 'root'
 })
@@ -30,27 +32,5 @@ providedIn: 'root'
       return this.http.get<MensajeDTO>(`${this.publicUrl}/enviar-link-recuperacion-password-moderador/${linkRecuperacionDTO}`);
     }
 
-    buscarNegocioNombre(busquedaNombreDTO: BusquedaNombreDTO): Observable<MensajeDTO> {
-      return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-nombre/${busquedaNombreDTO}`);
-    }
 
-    /*buscarNegocioCategoria(categoria: CategoriaNegocio): Observable<MensajeDTO> {
-      return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-categoria/${categoria}`);
-    }*/
-
-    buscarNegocioDistancia(busquedaDistanciaDTO: BusquedaDistanciaDTO): Observable<MensajeDTO> {
-      return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-distancia/${busquedaDistanciaDTO}`);
-    }
-
-    listarComentariosNegocio(idNegocio: string): Observable<MensajeDTO> {
-      return this.http.get<MensajeDTO>(`${this.publicUrl}/listar-comentarios-negocio/${idNegocio}`);
-    }
-
-    /*filtrarPorEstado(estadoNegocio: EstadoNegocio): Observable<MensajeDTO> {
-      return this.http.get<MensajeDTO>(`${this.publicUrl}/filtar-estado/${estadoNegocio}`);
-    }*/
-
-    buscarNegocio(codigoNegocio: string): Observable<MensajeDTO> {
-      return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio/${codigoNegocio}`);
-    }
 }

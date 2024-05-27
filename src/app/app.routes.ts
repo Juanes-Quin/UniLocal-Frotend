@@ -30,9 +30,7 @@ import { RegistroAgendaComponent } from './componentes/registro-agenda/registro-
 //modules
 import { NgModule, Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
-import { AlertaComponent } from './componentes/alerta/alerta.component';
-import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
+import { BusquedaComponent } from './componentes/busquedaNegocioNombre/busqueda.component';
 import {LoginGuard} from "./guards/permiso.service";
 import {HistorialRevisionComponent} from "./componentes/historial-revision/historial-revision.component";
 import {RolesGuard} from "./guards/roles.service";
@@ -62,8 +60,9 @@ export const routes: Routes = [
     //{path: 'misNegocios', component: MisNegociosComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] } },
 
 
-    {path: 'crearNegocio', component: CrearNegocioComponent, canActivate: [RolesGuard], data: {
-        expectedRole: ["CLIENTE"] } },
+    /*{path: 'crearNegocio', component: CrearNegocioComponent, canActivate: [RolesGuard], data: {
+        expectedRole: ["CLIENTE"] } }*/
+    {path: 'crearNegocio', component: CrearNegocioComponent},
 
     {path: 'detalleNegocio/:codigo', component: VerDetalleNegocioComponent},
     {path: 'busqueda/:texto', component: BusquedaComponent},
@@ -73,7 +72,7 @@ export const routes: Routes = [
         [RolesGuard], data: { expectedRole: ["MODERADOR"] } },
 
 
-    {path: '**', pathMatch: "full", redirectTo: "" }//Se siempre es el ultimo de la lista
+    {path: '**', pathMatch: "full", redirectTo: "" }//siempre es el ultimo de la lista
 ];
 
 @NgModule({
