@@ -4,21 +4,19 @@ import { NegociosService } from '../../servicios/negocios.service';
 import { MapaService } from '../../servicios/mapa.service';
 import {ItemNegocioDTO} from "../../dto/negocio/item-negocio-dto";
 import {Alerta} from "../../model/alerta";
-import {CategoriaNegocioDTO} from "../../dto/CategoriaNegocioDTO";
-import {BusquedaDistanciaDTO} from "../../dto/BusquedaDistanciaDTO";
-import {EstadoNegocioDTO} from "../../dto/EstadoNegocioDTO";
-import {BusquedaNombreDTO} from "../../dto/BusquedaNombreDTO";
+import {BusquedaCategoriaNegocioDTO} from "../../dto/BusquedaCategoriaNegocioDTO";
+
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 @Component({
   selector: 'app-busqueda',
   standalone: true,
   imports: [FormsModule, CommonModule, RouterModule],
-  templateUrl: './busqueda.component.html',
-  styleUrl: './busqueda.component.css'
+  templateUrl: './busqueda-negocio-categoria.component.html',
+  styleUrl: './busqueda-negocio-categoria.component.css'
 })
-export class BusquedaComponent implements OnInit {
-  busquedaNombreDTO: BusquedaNombreDTO;
+export class BusquedaNegocioCategoriaComponent implements OnInit {
+  busquedaCategoriaNegocioDTO: BusquedaCategoriaNegocioDTO;
   textoBusqueda: string;
   resultados: ItemNegocioDTO[];
   alerta!: Alerta;
@@ -33,28 +31,29 @@ export class BusquedaComponent implements OnInit {
     this.resultados = [];
     this.textoBusqueda = "";
     this.route.params.subscribe(params => {
-    this.textoBusqueda = params['texto']});
-    this.busquedaNombreDTO = new BusquedaNombreDTO(this.textoBusqueda);
+      this.textoBusqueda = params['texto']});
+    this.busquedaCategoriaNegocioDTO = new BusquedaCategoriaNegocioDTO(this.textoBusqueda);
 
   }
 
-  public buscarNegocioNombre() {
-    this.negociosService.buscarNegocioNombre(this.busquedaNombreDTO).subscribe({
+  public buscarNegocioCategoria() {
+    this.negociosService.buscarNegocioCategoria(this.busquedaCategoriaNegocioDTO).subscribe({
       next: (data) => {
         this.alerta = new Alerta(data.nombre, "success");
         // Asignar los resultados de la búsqueda a la propiedad 'resultados'
         this.resultados.push(data);
       },
       error: (error) => {
-        this.alerta = new Alerta("Error al buscar negocio por codigo", "danger");
+        this.alerta = new Alerta("Error al buscar negocio por categoria", "danger");
       }
     });
   }
 
 
+
   ngOnInit(): void {
     this.mapaService.crearMapa();
-    this.buscarNegocioNombre();
+    this.buscarNegocioCategoria();
     this.mapaService.pintarMarcadores(this.resultados);
   }
 

@@ -10,9 +10,9 @@ import { ImagenService } from '../../servicios/imagen.service';
 import { Route, RouterModule } from '@angular/router';
 import {ClienteService} from "../../servicios/cliente.service";
 import {BusquedaNombreDTO} from "../../dto/BusquedaNombreDTO";
-import {CategoriaNegocioDTO} from "../../dto/CategoriaNegocioDTO";
+import {BusquedaCategoriaNegocioDTO} from "../../dto/BusquedaCategoriaNegocioDTO";
 import {BusquedaDistanciaDTO} from "../../dto/BusquedaDistanciaDTO";
-import {EstadoNegocioDTO} from "../../dto/EstadoNegocioDTO";
+import {BusquedaEstadoNegocioDTO} from "../../dto/BusquedaEstadoNegocioDTO";
 
 @Component({
   selector: 'app-registro',

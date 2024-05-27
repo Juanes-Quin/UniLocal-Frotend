@@ -30,11 +30,15 @@ import { RegistroAgendaComponent } from './componentes/registro-agenda/registro-
 //modules
 import { NgModule, Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { BusquedaComponent } from './componentes/busquedaNegocioNombre/busqueda.component';
+import { BusquedaNegocioNombreComponent } from './componentes/busqueda-negocio-nombre/busqueda-negocio-nombre.component';
 import {LoginGuard} from "./guards/permiso.service";
 import {HistorialRevisionComponent} from "./componentes/historial-revision/historial-revision.component";
 import {RolesGuard} from "./guards/roles.service";
 import {MisNegociosComponent} from "./componentes/mis-negocios/mis-negocios.component";
+import {
+  BusquedaNegocioCategoriaComponent
+} from "./componentes/busqueda-negocio-categoria/busqueda-negocio-categoria.component";
+import {BusquedaNegocioEstadoComponent} from "./componentes/busqueda-negocio-estado/busqueda-negocio-estado.component";
 
 export const routes: Routes = [
     {path: '', component: InicioComponent},
@@ -64,9 +68,16 @@ export const routes: Routes = [
         expectedRole: ["CLIENTE"] } }*/
     {path: 'crearNegocio', component: CrearNegocioComponent},
 
+<<<<<<< HEAD
     {path: 'detalleNegocio/:codigo', component: VerDetalleNegocioComponent},
     {path: 'busqueda/:texto', component: BusquedaComponent},
 
+=======
+    {path: 'verDetalleNegocio/:codigo', component: VerDetalleNegocioComponent},
+    {path: 'busquedaNegocioNombre/:texto', component: BusquedaNegocioNombreComponent},
+    {path: 'busquedaNegocioCategoria/:texto', component: BusquedaNegocioCategoriaComponent},
+    {path: 'busquedaNegocioEstado/:texto', component: BusquedaNegocioEstadoComponent},
+>>>>>>> d8f6b85c15ea455afb4abd944b50d39dfee8bed4
 
     { path: "historial-revision/:codigo", component: HistorialRevisionComponent, canActivate:
         [RolesGuard], data: { expectedRole: ["MODERADOR"] } },

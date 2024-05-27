@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { LinkRecuperacionDTO } from '../dto/cuenta/link-recuperacion-dto';
 import { BusquedaNombreDTO } from '../dto/BusquedaNombreDTO';
 import { BusquedaDistanciaDTO } from '../dto/BusquedaDistanciaDTO';
-import {CategoriaNegocioDTO} from "../dto/CategoriaNegocioDTO";
-import {EstadoNegocioDTO} from "../dto/EstadoNegocioDTO";
+import {BusquedaCategoriaNegocioDTO} from "../dto/BusquedaCategoriaNegocioDTO";
+import {BusquedaEstadoNegocioDTO} from "../dto/BusquedaEstadoNegocioDTO";
 @Injectable({
 providedIn: 'root'
 })
