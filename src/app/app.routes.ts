@@ -45,17 +45,17 @@ export const routes: Routes = [
     {path: 'recuperarContrasena', component: RecuperarContrasenaComponent},
     //LOS DEL CLIENTE
     {path: 'agenda', component: AgendaComponent},
-    {path: 'verDetalleAgenda', component: VerDetalleAgendaComponent},
+    {path: 'verDetalleAgenda/codigo', component: VerDetalleAgendaComponent},
     {path: 'registroAgenda', component: RegistroAgendaComponent},
     {path: 'favoritos', component: FavoritosClienteComponent},
     {path: 'editarPerfil', component: EditarPerfilComponent},
     //LOS DEL NEGOCIO
     {path: 'reserva', component: ReservaComponent},
     {path: 'gestionNegocios', component: GestionNegociosComponent},
-    {path: 'negocios', component: NegociosComponent},
+    {path: 'negocios/:codigo', component: NegociosComponent},
     {path: 'actualizarNegocio', component: ActualizarNegocioComponent},
-    {path: 'detalleNegocio', component: DetalleNegocioComponent},
-    {path: 'misNegocios', component: MisNegociosComponent},
+    {path: 'detalleNegocio/:codigo', component: DetalleNegocioComponent},
+    {path: 'misNegocios/:codigo', component: MisNegociosComponent},
     //esta comentado mientras se diseña, despues es necesario descomentarlo
     //para que solo los clientes puedan ver sus negocios
     //{path: 'misNegocios', component: MisNegociosComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] } },
@@ -64,11 +64,11 @@ export const routes: Routes = [
     {path: 'crearNegocio', component: CrearNegocioComponent, canActivate: [RolesGuard], data: {
         expectedRole: ["CLIENTE"] } },
 
-    {path: 'verDetalleNegocio/:codigo', component: VerDetalleNegocioComponent},
+    {path: 'detalleNegocio/:codigo', component: VerDetalleNegocioComponent},
     {path: 'busqueda/:texto', component: BusquedaComponent},
 
 
-    { path: "historial-revision", component: HistorialRevisionComponent, canActivate:
+    { path: "historial-revision/:codigo", component: HistorialRevisionComponent, canActivate:
         [RolesGuard], data: { expectedRole: ["MODERADOR"] } },
 
 
