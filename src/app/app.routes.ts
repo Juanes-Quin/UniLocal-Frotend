@@ -59,8 +59,9 @@ export const routes: Routes = [
     //{path: 'misNegocios', component: MisNegociosComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] } },
 
 
-    {path: 'crearNegocio', component: CrearNegocioComponent, canActivate: [RolesGuard], data: {
-        expectedRole: ["CLIENTE"] } },
+    /*{path: 'crearNegocio', component: CrearNegocioComponent, canActivate: [RolesGuard], data: {
+        expectedRole: ["CLIENTE"] } }*/
+    {path: 'crearNegocio', component: CrearNegocioComponent},
 
     {path: 'verDetalleNegocio/:codigo', component: VerDetalleNegocioComponent},
     {path: 'busqueda/:texto', component: BusquedaComponent},

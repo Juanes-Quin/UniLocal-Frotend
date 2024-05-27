@@ -14,6 +14,7 @@
 }
 
 .card-body {
+
     padding: 20px;
     position: relative;
 }
@@ -53,12 +54,15 @@ textarea {
 }
 
 #mapa {
-    width: 400px;
-    height: 400px;
-    position: absolute;
-    bottom: 0; /* Posicionado debajo de la palabra "Ubicación" */
-    left: 50%; /* Centrado horizontalmente */
-    transform: translateX(-50%); /* Ajuste para centrar */
+  width: 100%; /* Ajusta el ancho al 100% del contenedor */
+  height: 400px;
+  position: relative; /* Cambia a posición relativa */
+  margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+  z-index: 1;
+}
+
+#mapa-container {
+  position: relative;
 }
 
 button {

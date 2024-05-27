@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Horario } from '../../model/horario';
 import { ClienteService } from '../../servicios/cliente.service';
+import {MapaService} from "../../servicios/mapa.service";
 
 @Component({
   selector: 'app-crear-negocio',
@@ -17,9 +18,17 @@ export class CrearNegocioComponent {
   horarios: Horario[];
   archivos!: FileList[];
 
-  constructor(private clienteService: ClienteService) {
+  constructor(private clienteService: ClienteService, private mapaService: MapaService) {
     this.registroNegocioDTO = new RegistroNegocioDTO();
     this.horarios = [new Horario()];
+  }
+
+  ngOnInit(): void {
+    this.mapaService.crearMapa();
+    this.mapaService.agregarMarcador().subscribe((marcador) => {
+      this.registroNegocioDTO.ubicacion.latitud = marcador.lat;
+      this.registroNegocioDTO.ubicacion.longitud = marcador.lng;
+    });
   }
 
   public crearNegocio() {
