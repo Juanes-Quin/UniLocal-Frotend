@@ -24,10 +24,6 @@ import {EstadoNegocioDTO} from "../../dto/EstadoNegocioDTO";
 
 export class RegistroComponent {
   registroClienteDTO: RegistroClienteDTO;
-  busquedaNombreDTO: BusquedaNombreDTO;
-  categoriaNegocio: CategoriaNegocioDTO;
-  busquedaDistanciaDTO: BusquedaDistanciaDTO;
-  estadoNegocio: EstadoNegocioDTO;
 
   ciudades: string[];
   categorias: string[];
@@ -47,11 +43,8 @@ export class RegistroComponent {
     this.categorias = [];
     this.cargarCategorias();
 
-    this.busquedaNombreDTO = new BusquedaNombreDTO();
-    this.categoriaNegocio = new CategoriaNegocioDTO();
-    this.busquedaDistanciaDTO = new BusquedaDistanciaDTO();
-    this.estadoNegocio = new EstadoNegocioDTO();
   }
+
 
   /**
    * registrar
@@ -158,85 +151,5 @@ export class RegistroComponent {
 
     }
 
-    public buscarNegocioNombre(busquedaNombreDTO: BusquedaNombreDTO) {
-      this.publicoService.buscarNegocioNombre(busquedaNombreDTO).subscribe({
-        next: (data) => {
-          this.alerta = new Alerta(data.respuesta, "success");
-        },
-        error: (error) => {
-          this.alerta = new Alerta("Error al buscar negocio por nombre", "danger");
-        }
-      });
-
-      this.clienteService.buscarNegocioNombre(busquedaNombreDTO).subscribe({
-        next: (data) => {
-          this.alerta = new Alerta(data.respuesta, "success");
-        },
-        error: (error) => {
-          this.alerta = new Alerta("Error al buscar negocio por nombre", "danger");
-        }
-      });
-
-  }
-
-    public buscarNegocioCategoria(categoriaNegocio: CategoriaNegocioDTO) {
-      this.publicoService.buscarNegocioCategoria(categoriaNegocio).subscribe({
-        next: (data) => {
-          this.alerta = new Alerta(data.respuesta, "success");
-        },
-        error: (error) => {
-          this.alerta = new Alerta("Error al buscar negocio por categoria", "danger");
-        }
-      });
-
-      this.clienteService.buscarNegocioCategoria(categoriaNegocio).subscribe({
-        next: (data) => {
-          this.alerta = new Alerta(data.respuesta, "success");
-        },
-        error: (error) => {
-          this.alerta = new Alerta("Error al buscar negocio por categoria", "danger");
-        }
-      });
-    }
-
-    public buscarNegocioDistancia(busquedaDistanciaDTO: BusquedaDistanciaDTO) {
-      this.publicoService.buscarNegocioDistancia(busquedaDistanciaDTO).subscribe({
-        next: (data) => {
-          this.alerta = new Alerta(data.respuesta, "success");
-        },
-        error: (error) => {
-          this.alerta = new Alerta("Error al buscar negocio por distancia", "danger");
-        }
-      });
-
-      this.clienteService.buscarNegocioDistancia(busquedaDistanciaDTO).subscribe({
-        next: (data) => {
-          this.alerta = new Alerta(data.respuesta, "success");
-        },
-        error: (error) => {
-          this.alerta = new Alerta("Error al buscar negocio por distancia", "danger");
-        }
-      });
-    }
-
-    public filtrarPorEstado(estadoNegocio: EstadoNegocioDTO) {
-      this.publicoService.filtrarPorEstado(estadoNegocio).subscribe({
-        next: (data) => {
-          this.alerta = new Alerta(data.respuesta, "success");
-        },
-        error: (error) => {
-          this.alerta = new Alerta("Error al filtrar negocio por estado", "danger");
-        }
-      });
-
-      this.clienteService.filtrarPorEstado(estadoNegocio).subscribe({
-        next: (data) => {
-          this.alerta = new Alerta(data.respuesta, "success");
-        },
-        error: (error) => {
-          this.alerta = new Alerta("Error al filtrar negocio por estado", "danger");
-        }
-      });
-    }
 
 }

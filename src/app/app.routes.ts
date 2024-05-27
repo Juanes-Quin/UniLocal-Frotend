@@ -30,7 +30,7 @@ import { RegistroAgendaComponent } from './componentes/registro-agenda/registro-
 //modules
 import { NgModule, Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
+import { BusquedaComponent } from './componentes/busquedaNegocioNombre/busqueda.component';
 import {LoginGuard} from "./guards/permiso.service";
 import {HistorialRevisionComponent} from "./componentes/historial-revision/historial-revision.component";
 import {RolesGuard} from "./guards/roles.service";
