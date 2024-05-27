@@ -1,7 +1,7 @@
 <div class="container-fluid"> <!-- Contenedor que ocupa todo el ancho disponible -->
   <div class="row">
     <div class="col-md-10 col-sm-12 "> <!-- Ancho del campo de búsqueda -->
-      <form role="search" (submit)="iraBusqueda(textoBusqueda.value)">
+      <form role="search" (submit)="iraBusquedaNombre(textoBusqueda.value)">
         <div class="input-group">
           <input #textoBusqueda type="search" class="form-control" placeholder="Buscar..." aria-label="Search">
           <button type="button" class="btn btn-primary">
@@ -19,17 +19,17 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <h6 class="dropdown-header">Categorias</h6>
           <!-- Lista desplegable para categorías -->
-          <a class="dropdown-item" href="#">Restaurante</a>
-          <a class="dropdown-item" href="#">Cafeteria</a>
-          <a class="dropdown-item" href="#">Comida Rapida</a>
-          <a class="dropdown-item" href="#">Museo</a>
-          <a class="dropdown-item" href="#">Hotel</a>
+          <a class="dropdown-item" (click)="iraBusquedaCategoria('RESTAURANTE')">Restaurante</a>
+          <a class="dropdown-item" (click)="iraBusquedaCategoria('CAFETERIA')">Cafeteria</a>
+          <a class="dropdown-item" (click)="iraBusquedaCategoria('COMIDA_RAPIDA')">Comida Rapida</a>
+          <a class="dropdown-item" (click)="iraBusquedaCategoria('MUSEO')">Museo</a>
+          <a class="dropdown-item" (click)="iraBusquedaCategoria('HOTEL')">Hotel</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header">Estado</h6>
           <!-- Lista desplegable para estado -->
-          <a class="dropdown-item" href="#">Activo</a>
-          <a class="dropdown-item" href="#">Inactivo</a>
-          <a class="dropdown-item" href="#">Pendiente</a>
+          <a class="dropdown-item" (click)="iraBusquedaEstado('ACTIVO')">Activo</a>
+          <a class="dropdown-item" (click)="iraBusquedaEstado('INACTIVO')">Inactivo</a>
+          <a class="dropdown-item" (click)="iraBusquedaEstado('PENDIENTE')">Pendiente</a>
         </div>
       </div>
     </div>

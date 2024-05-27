@@ -14,18 +14,31 @@ import { ClienteService } from '../../servicios/cliente.service';
 
 export class InicioComponent implements OnInit {
 
-  constructor(private mapaService: MapaService, private router: Router, private clienteService: ClienteService) { 
-    
+  constructor(private mapaService: MapaService, private router: Router, private clienteService: ClienteService) {
+
   }
-  
+
   ngOnInit(): void {
     this.mapaService.crearMapa();
 
   }
 
-  public iraBusqueda(valor:string){
+  public iraBusquedaNombre(valor:string){
     if(valor){
-      this.router.navigate(["/busqueda", valor]);
+      this.router.navigate(["/busquedaNegocioNombre", valor]);
     }
   }
+
+  public iraBusquedaCategoria(valor:string){
+    if(valor){
+      this.router.navigate(["/busquedaNegocioCategoria", valor]);
+    }
+  }
+
+  public iraBusquedaEstado(valor:string){
+    if(valor){
+      this.router.navigate(["/busquedaNegocioEstado", valor]);
+    }
+  }
+
 }

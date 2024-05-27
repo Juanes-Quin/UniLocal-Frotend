@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import {BusquedaNombreDTO} from "../dto/BusquedaNombreDTO";
 import {Observable} from "rxjs";
 import {MensajeDTO} from "../dto/MensajeDTO";
-import {CategoriaNegocioDTO} from "../dto/CategoriaNegocioDTO";
+import {BusquedaCategoriaNegocioDTO} from "../dto/BusquedaCategoriaNegocioDTO";
 import {BusquedaDistanciaDTO} from "../dto/BusquedaDistanciaDTO";
-import {EstadoNegocioDTO} from "../dto/EstadoNegocioDTO";
+import {BusquedaEstadoNegocioDTO} from "../dto/BusquedaEstadoNegocioDTO";
 import {HttpClient} from "@angular/common/http";
 import {ItemNegocioDTO} from "../dto/negocio/item-negocio-dto";
 
@@ -25,7 +25,7 @@ export class NegociosService {
     return this.http.get<ItemNegocioDTO>(`${this.publicUrl}/buscar-negocio-nombre/${busquedaNombreDTO}`);
   }
 
-  buscarNegocioCategoria(categoria: CategoriaNegocioDTO): Observable<ItemNegocioDTO> {
+  buscarNegocioCategoria(categoria: BusquedaCategoriaNegocioDTO): Observable<ItemNegocioDTO> {
     return this.http.get<ItemNegocioDTO>(`${this.publicUrl}/buscar-negocio-categoria/${categoria}`);
   }
 
@@ -33,7 +33,7 @@ export class NegociosService {
     return this.http.get<ItemNegocioDTO>(`${this.publicUrl}/buscar-negocio-distancia/${busquedaDistanciaDTO}`);
   }
 
-  filtrarPorEstado(estadoNegocio: EstadoNegocioDTO): Observable<ItemNegocioDTO> {
+  filtrarPorEstado(estadoNegocio: BusquedaEstadoNegocioDTO): Observable<ItemNegocioDTO> {
     return this.http.get<ItemNegocioDTO>(`${this.publicUrl}/filtar-estado/${estadoNegocio}`);
   }
 

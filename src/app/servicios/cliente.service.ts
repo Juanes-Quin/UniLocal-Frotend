@@ -14,8 +14,8 @@ import { RegistroNegocioDTO } from '../dto/negocio/RegistroNegocioDTO';
 import { DetalleReservaDTO } from '../dto/reserva/DetalleReservaDTO';
 import { RegistroAgendaDTO } from '../dto/agenda/registro-agenda-dto';
 import { BusquedaNombreDTO } from '../dto/BusquedaNombreDTO';
-import {CategoriaNegocioDTO} from "../dto/CategoriaNegocioDTO";
-import {EstadoNegocioDTO} from "../dto/EstadoNegocioDTO";
+import {BusquedaCategoriaNegocioDTO} from "../dto/BusquedaCategoriaNegocioDTO";
+import {BusquedaEstadoNegocioDTO} from "../dto/BusquedaEstadoNegocioDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -58,7 +58,7 @@ export class ClienteService {
     return this.http.get<MensajeDTO>(`${this.userUrl}/buscar-negocio-nombre/${busquedaNombreDTO}`);
   }
 
-  public buscarNegocioCategoria(categoria: CategoriaNegocioDTO): Observable<MensajeDTO> {
+  public buscarNegocioCategoria(categoria: BusquedaCategoriaNegocioDTO): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.userUrl}/buscar-negocio-categoria/${categoria}`);
   }
 
@@ -70,7 +70,7 @@ export class ClienteService {
     return this.http.get<MensajeDTO>(`${this.userUrl}/recomendar-negocio/${idClienteYNegocioDTO}`);
   }
 
-  public filtrarPorEstado(estadoNegocio: EstadoNegocioDTO): Observable<MensajeDTO> {
+  public filtrarPorEstado(estadoNegocio: BusquedaEstadoNegocioDTO): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.userUrl}/filtar-estado/${estadoNegocio}`);
   }
 
