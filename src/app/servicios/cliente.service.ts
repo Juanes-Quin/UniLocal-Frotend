@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { MensajeDTO } from '../dto/MensajeDTO';
 import { ActualizarClienteDTO } from '../dto/cliente/actualizarclienteDTO';
 import { IDClienteYNegocioDTO } from '../dto/negocio/IDClienteYNegocioDTO';
-import { BusquedaDistanciaDTO } from '../dto/busqueda.distancia-dto';
+import { BusquedaDistanciaDTO } from '../dto/BusquedaDistanciaDTO';
 import { RegistroComentarioDTO } from '../dto/comentario/registroComentarioDTO';
 import { RespuestaComentarioDTO } from '../dto/comentario/respuestaComentarioDTO';
 import { CambioPasswordDTO } from '../dto/cuenta/cambioPasswordDTO';
@@ -14,6 +14,8 @@ import { RegistroNegocioDTO } from '../dto/negocio/RegistroNegocioDTO';
 import { DetalleReservaDTO } from '../dto/reserva/DetalleReservaDTO';
 import { RegistroAgendaDTO } from '../dto/agenda/registro-agenda-dto';
 import { BusquedaNombreDTO } from '../dto/BusquedaNombreDTO';
+import {CategoriaNegocioDTO} from "../dto/CategoriaNegocioDTO";
+import {EstadoNegocioDTO} from "../dto/EstadoNegocioDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -56,9 +58,9 @@ export class ClienteService {
     return this.http.get<MensajeDTO>(`${this.userUrl}/buscar-negocio-nombre/${busquedaNombreDTO}`);
   }
 
-  /*public buscarNegocioCategoria(categoria: CategoriaNegocio): Observable<MensajeDTO> {
+  public buscarNegocioCategoria(categoria: CategoriaNegocioDTO): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.userUrl}/buscar-negocio-categoria/${categoria}`);
-  }*/
+  }
 
   public buscarNegocioDistancia(busquedaDistanciaDTO: BusquedaDistanciaDTO): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.userUrl}/buscar-negocio-distancia/${busquedaDistanciaDTO}`);
@@ -68,9 +70,9 @@ export class ClienteService {
     return this.http.get<MensajeDTO>(`${this.userUrl}/recomendar-negocio/${idClienteYNegocioDTO}`);
   }
 
-  /*public filtrarPorEstado(estadoNegocio: EstadoNegocio): Observable<MensajeDTO> {
+  public filtrarPorEstado(estadoNegocio: EstadoNegocioDTO): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.userUrl}/filtar-estado/${estadoNegocio}`);
-  }*/
+  }
 
   public registrarAgenda(registroAgendaDTO: RegistroAgendaDTO): Observable<MensajeDTO> {
     return this.http.post<MensajeDTO>(`${this.userUrl}/registrar-agenda`, registroAgendaDTO);
@@ -159,5 +161,5 @@ export class ClienteService {
   public verDetalleNegocio(codigoNegocio: string): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.userUrl}/ver-detalle-negocio/${codigoNegocio}`);
   }
- 
+
 }
