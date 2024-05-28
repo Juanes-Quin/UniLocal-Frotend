@@ -7,6 +7,7 @@ import { ClienteService } from '../../servicios/cliente.service';
 import {MapaService} from "../../servicios/mapa.service";
 import { AlertaComponent } from '../alerta/alerta.component';
 import { Alerta } from '../../model/alerta';
+import { AuthService } from '../../servicios/auth.service';
 
 @Component({
   selector: 'app-crear-negocio',
@@ -22,7 +23,7 @@ export class CrearNegocioComponent {
   archivos!: FileList[];
   alerta!: Alerta;
 
-  constructor(private clienteService: ClienteService, private mapaService: MapaService) {
+  constructor(private clienteService: ClienteService, private authService: AuthService, private mapaService: MapaService) {
     this.registroNegocioDTO = new RegistroNegocioDTO();
     this.horarios = [new Horario()];
     this.tipo =[];
@@ -35,6 +36,17 @@ export class CrearNegocioComponent {
       this.registroNegocioDTO.ubicacion.latitud = marcador.lat;
       this.registroNegocioDTO.ubicacion.longitud = marcador.lng;
     });
+  }
+
+  agregarTelefono() {
+    if (!this.registroNegocioDTO.telefono) {
+      this.registroNegocioDTO.telefono = [];
+    }
+    this.registroNegocioDTO.telefono.push('');
+  }
+
+  eliminarTelefono(index: number) {
+    this.registroNegocioDTO.telefono.splice(index, 1);
   }
 
   public crearNegocio() {
@@ -85,16 +97,7 @@ export class CrearNegocioComponent {
         this.tipo = data.respuesta;
       },
       error: (error) => {
-        console.log("Error al cargar las ciudades");
-      }
-    });
-
-    this.clienteService.listarCiudades().subscribe({
-      next: (data) => {
-        this.tipo = data.respuesta;
-      },
-      error: (error) => {
-        console.log("Error al cargar las ciudades");
+        console.log("Error al cargar los tipos");
       }
     });
   }
