@@ -61,7 +61,7 @@ export const routes: Routes = [
     {path: 'negocios', component: NegociosComponent},
     {path: 'actualizarNegocio/codigo', component: ActualizarNegocioComponent},
     {path: 'detalleNegocio/codigo', component: DetalleNegocioComponent},
-    {path: 'misNegocios/codigo', component: MisNegociosComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] }},
+    {path: 'misNegocios', component: MisNegociosComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] }},
 
     //esta comentado mientras se diseña, despues es necesario descomentarlo
     //para que solo los clientes puedan ver sus negocios
