@@ -9,8 +9,6 @@ import { Alerta } from '../../model/alerta';
 import { AlertaComponent } from "../alerta/alerta.component";
 
 
-
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -29,33 +27,23 @@ export class LoginComponent {
     this.sesionDTO = new SesionDTO(); // Inicialización aquí
   }
 
-  public ingresar() {
-
-    if(this.sesionDTO.email){
+  public login() {
+    if (this.sesionDTO.email && this.sesionDTO.password) {
       this.authService.login(this.sesionDTO).subscribe({
         next: data => {
+          this.alerta = { mensaje: "Inicio de sesión correcto", tipo: "success" };
           this.tokenService.login(data.respuesta.token);
-        },
 
+        },
         error: error => {
-        this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
+          this.alerta = { mensaje: "Usuario y/o contraseña incorrectos", tipo: "danger" };
+          this.sesionDTO.email=''
+          this.sesionDTO.password=''
         }
       });
+    } else {
+      this.alerta = { mensaje: "Debe ingresar los datos correctos", tipo: "danger" };
     }
-    else{
-      this.alerta = {mensaje: "debe ingresar los datos correctos", tipo: "danger"};
-      }
-  }
-
-  public login() {
-    this.authService.login(this.sesionDTO).subscribe({
-    next: data => {
-      this.tokenService.login(data.respuesta.token);
-    },
-    error: error => {
-    this.alerta = new Alerta(error.error.respuesta, "danger" );
-    }
-    });
   }
 
 }

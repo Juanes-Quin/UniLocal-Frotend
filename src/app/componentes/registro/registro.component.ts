@@ -9,10 +9,6 @@ import { Alerta } from '../../model/alerta';
 import { ImagenService } from '../../servicios/imagen.service';
 import { Route, RouterModule } from '@angular/router';
 import {ClienteService} from "../../servicios/cliente.service";
-import {BusquedaNombreDTO} from "../../dto/BusquedaNombreDTO";
-import {BusquedaCategoriaNegocioDTO} from "../../dto/BusquedaCategoriaNegocioDTO";
-import {BusquedaDistanciaDTO} from "../../dto/BusquedaDistanciaDTO";
-import {BusquedaEstadoNegocioDTO} from "../../dto/BusquedaEstadoNegocioDTO";
 import { AlertaComponent } from '../alerta/alerta.component';
 
 @Component({
@@ -51,29 +47,30 @@ export class RegistroComponent {
    * registrar
    */
   public registrar() {
-    if (this.registroClienteDTO.fotoPerfil != "") {
-      this.authService.registrarCliente(this.registroClienteDTO).subscribe({
-        next: (data) => {
-          this.alerta = new Alerta(data.respuesta, "success");
-        },
-        error: (error) => {
-          if (error.status === 400) {
-            const errorMessage = error.error.mensaje;
-            if (errorMessage.includes("El correo ya se encuentra registrado")) {
-              this.alerta = new Alerta("El correo ya se encuentra registrado. Por favor, ingrese un nuevo correo.", "danger");
-            } else if (errorMessage.includes("El nickname ya se encuentra registrado por otro usuario")) {
-              this.alerta = new Alerta("El nickname ya se encuentra registrado por otro usuario. Por favor, elija un nickname diferente.", "danger");
-            } else {
-              this.alerta = new Alerta(error.error.respuesta, "danger");
-            }
-          } else {
-            this.alerta = new Alerta("Error al registrar el cliente. Por favor, intente nuevamente.", "danger");
-          }
-        }
-      });
-    } else {
+    if (this.registroClienteDTO.fotoPerfil === "") {
       this.alerta = new Alerta("Debe subir una imagen", "danger");
+      return;
     }
+  
+    this.authService.registrarCliente(this.registroClienteDTO).subscribe({
+      next: (data) => {
+        this.alerta = new Alerta(data.respuesta, "success");
+      },
+      error: (error) => {
+        if (error.status === 400) {
+          const errorMessage = error.error.mensaje;
+          if (errorMessage.includes("El correo ya se encuentra registrado")) {
+            this.alerta = new Alerta("El correo ya se encuentra registrado. Por favor, ingrese un nuevo correo.", "danger");
+          } else if (errorMessage.includes("El nickname ya se encuentra registrado por otro usuario")) {
+            this.alerta = new Alerta("El nickname ya se encuentra registrado por otro usuario. Por favor, elija un nickname diferente.", "danger");
+          } else {
+            this.alerta = new Alerta(error.error.respuesta, "danger");
+          }
+        } else {
+          this.alerta = new Alerta("Error al registrar el cliente. Por favor, intente nuevamente.", "danger");
+        }
+      }
+    });
   }
 
   /**

@@ -22,7 +22,12 @@ export class RegistroAgendaComponent {
   }
 
   registrarAgenda() {
-    // Lógica para registrar la agenda
+    const codigoNegocio = this.tokenService.getCodigo();
+    this.clienteService.registrarAgenda(this.registroAgendaDTO).subscribe({
+      next: data => {
+        this.registroAgendaDTO.codigoCliente = data.respuesta.codigoNegocio;
+      }
+    })
     console.log(this.registroAgendaDTO);
   }
 }

@@ -8,11 +8,12 @@ import { ImagenService } from '../../servicios/imagen.service';
 import { Alerta } from '../../model/alerta';
 import { ClienteService } from '../../servicios/cliente.service';
 import { PublicoService } from '../../servicios/publico.service';
+import { AlertaComponent } from '../alerta/alerta.component';
 
 @Component({
   selector: 'app-editar-perfil',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, AlertaComponent],
   templateUrl: './editar-perfil.component.html',
   styleUrl: './editar-perfil.component.css'
 })
@@ -43,31 +44,38 @@ export class EditarPerfilComponent {
         this.actualizarClienteDTO.fotoPerfil = data.respuesta.fotoPerfil;
         this.actualizarClienteDTO.nombre = data.respuesta.nombre;
         this.actualizarClienteDTO.ciudadResidencia = data.respuesta.ciudadResidencia;
-
-
       } 
     })
-
   }
 
   public editarPerfil() {
+    
     this.clienteService.actualizarCliente(this.actualizarClienteDTO).subscribe({
       next: data => {
-        this.alerta = { mensaje: data.respuesta, tipo: "success" };
+        this.actualizarClienteDTO.nombre = data.respuesta.nombre;
+        this.actualizarClienteDTO.fotoPerfil = data.respuesta.fotoPerfil;
+        this.actualizarClienteDTO.email = data.respuesta.email;
+        this.actualizarClienteDTO.ciudadResidencia = data.respuesta.ciudadResidencia;
+
+        this.alerta = { mensaje: "Datos actualizados correctamente",tipo:"success"};
       },
       error: error => {
-        this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
+        if (error.status === 400) {
+          const errorMessage = error.error.mensaje;
+          if (errorMessage.includes("El correo ya se encuentra registrado")) {
+            this.alerta = new Alerta("El correo ya se encuentra registrado. Por favor, ingrese un nuevo correo.", "danger");
+          }
+        } else {
+          this.alerta = new Alerta("Error al editar el perfil. Por favor, intente nuevamente.", "danger");
+        }
       }
-    });
+    }) 
   }
 
 
-  //fata un dto para actualizar la contraseña
-  //this.cambioPasswordDTO.passwordNueva == this.actualizarClienteDTO.confirmaPassword;
   public sonIguales(): boolean {
     return this.cambioPasswordDTO.passwordNueva == this.cambioPasswordDTO.passwordNueva;
   }
-
 
   private cargarCiudades() {
     this.publicoService.listarCiudades().subscribe({
@@ -82,7 +90,6 @@ export class EditarPerfilComponent {
 
   }
 
-  
 
   public cambiarContrasena() {
 
@@ -106,7 +113,6 @@ export class EditarPerfilComponent {
     }
 
   }
-
 
   public eliminarCuenta (){
     let codigo = this.tokenService.getCodigo();

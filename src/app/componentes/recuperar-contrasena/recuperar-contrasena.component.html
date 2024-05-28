@@ -1,34 +1,31 @@
 <div class="card">
-  <div class="card-header ps-5 pt-4 pb-4">
-    <h5 class="mb-0"><i class="fa-solid fa-user-plus me-3"></i>Registro de un nuevo paciente</h5>
-  </div>
-  <div class="card-body p-5">
-    <form #formulario="ngForm">
+    <div class="card-header ps-5 pt-4 pb-4">
+        <h5 class="mb-0"><i class="fa-solid fa-user-plus me-3"></i>Registro de un nuevo paciente</h5>
+    </div>
+    <div class="card-body p-5">
+        <app-alerta [alerta]="alerta"></app-alerta>
+        <form #formulario="ngForm">
 
-      <div class="mb-3">
-        <label class="col-sm-2 col-form-label">Correo:</label>
-        <div class="col-sm-10">
-          <input #correo="ngModel"
-            [ngClass]="correo.invalid && (correo.dirty || correo.touched) ? 'is-invalid' : ''"
-            type="text" name="correo" class="form-control" required [(ngModel)]="cambioPasswordDTO.email" />
-        </div>
-      </div>
+            <div class="mb-3">
+                <label class="col-sm-2 col-form-label">Correo:</label>
+                <div class="col-sm-10">
+                    <input #correo="ngModel" [ngClass]="correo.invalid && (correo.dirty || correo.touched) ? 'is-invalid' : ''" type="text" name="correo" class="form-control" required [(ngModel)]="cambioPasswordDTO.email" />
+                </div>
+            </div>
 
-      <div class="mb-3">
-        <label class="col-sm-2 col-form-label">Contraseña:</label>
-        <div class="col-sm-10">
-          <input #password="ngModel"
-            [ngClass]="password.invalid && (password.dirty || password.touched) ? 'is-invalid' : ''"
-            type="password" name="password" class="form-control" required [(ngModel)]="cambioPasswordDTO.passwordNueva" />
-        </div>
-      </div>
+            <div class="mb-3">
+                <label class="col-sm-2 col-form-label">Contraseña:</label>
+                <div class="col-sm-10">
+                    <input #password="ngModel" [ngClass]="password.invalid && (password.dirty || password.touched) ? 'is-invalid' : ''" type="password" name="password" class="form-control" required [(ngModel)]="cambioPasswordDTO.passwordNueva" />
+                </div>
+            </div>
 
-      <div class="mb-3">
-        <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid">
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid">
           <i class="fa-solid fa-circle-plus me-1"></i>Recuperar contraseña
         </button>
-      </div>
+            </div>
 
-    </form>
-  </div>
+        </form>
+    </div>
 </div>
