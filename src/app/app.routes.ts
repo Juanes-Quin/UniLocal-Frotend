@@ -47,17 +47,17 @@ export const routes: Routes = [
     {path: 'recuperarContrasena', component: RecuperarContrasenaComponent},
     //LOS DEL CLIENTE
     {path: 'agenda', component: AgendaComponent},
-    {path: 'verDetalleAgenda/codigo', component: VerDetalleAgendaComponent},
+    {path: 'verDetalleAgenda/:codigo', component: VerDetalleAgendaComponent},
     {path: 'registroAgenda', component: RegistroAgendaComponent},
     {path: 'favoritos', component: FavoritosClienteComponent},
     {path: 'editarPerfil', component: EditarPerfilComponent},
     //LOS DEL NEGOCIO
     {path: 'reserva', component: ReservaComponent},
     {path: 'gestionNegocios', component: GestionNegociosComponent},
-    {path: 'negocios/:codigo', component: NegociosComponent},
-    {path: 'actualizarNegocio', component: ActualizarNegocioComponent},
-    {path: 'detalleNegocio/:codigo', component: DetalleNegocioComponent},
-    {path: 'misNegocios/:codigo', component: MisNegociosComponent},
+    {path: 'negocios', component: NegociosComponent},
+    {path: 'actualizarNegocio/codigo', component: ActualizarNegocioComponent},
+    {path: 'detalleNegocio/codigo', component: DetalleNegocioComponent},
+    {path: 'misNegocios/codigo', component: MisNegociosComponent},
 
     //esta comentado mientras se diseña, despues es necesario descomentarlo
     //para que solo los clientes puedan ver sus negocios

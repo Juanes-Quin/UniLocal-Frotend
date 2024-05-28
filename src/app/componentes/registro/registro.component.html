@@ -82,12 +82,12 @@
                                                 @if (!sonIguales()) {
                                                   <p>Las contraseñas no coinciden</p>}
 
-                                                <button type="submit" class="btn btn-primary" [disabled]="f.invalid || !sonIguales()" (click)="registrar()" >Registrarse</button>
+                                                <button type="submit" [routerLink]="['/login']" class="btn btn-primary" [disabled]="f.invalid || !sonIguales()" (click)="registrar()" >Registrarse</button>
                                             </div>
                                         </div>
-                                        <!--
+                                        
                                         <app-alerta [alerta]="alerta"></app-alerta>
-                                        -->
+                                        
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">

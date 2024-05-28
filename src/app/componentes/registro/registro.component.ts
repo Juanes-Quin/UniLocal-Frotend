@@ -13,11 +13,12 @@ import {BusquedaNombreDTO} from "../../dto/BusquedaNombreDTO";
 import {BusquedaCategoriaNegocioDTO} from "../../dto/BusquedaCategoriaNegocioDTO";
 import {BusquedaDistanciaDTO} from "../../dto/BusquedaDistanciaDTO";
 import {BusquedaEstadoNegocioDTO} from "../../dto/BusquedaEstadoNegocioDTO";
+import { AlertaComponent } from '../alerta/alerta.component';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule],
+  imports: [FormsModule, CommonModule, RouterModule, AlertaComponent],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })

@@ -7,6 +7,7 @@ import { TokenService } from '../../servicios/token.service';
 import { ImagenService } from '../../servicios/imagen.service';
 import { Alerta } from '../../model/alerta';
 import { ClienteService } from '../../servicios/cliente.service';
+import { PublicoService } from '../../servicios/publico.service';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -24,11 +25,29 @@ export class EditarPerfilComponent {
   alerta !: Alerta;
 
 
-  constructor(private clienteService: ClienteService ,private tokenService: TokenService, private imagenService: ImagenService){
+  constructor(private clienteService: ClienteService ,private tokenService: TokenService, private publicoService: PublicoService, private imagenService: ImagenService){
     this.actualizarClienteDTO = new ActualizarClienteDTO();
     this.cambioPasswordDTO = new CambioPasswordDTO();
     this.ciudades = [];
     this.cargarCiudades();
+  }
+
+  public obtenerCliente(){
+
+    const id = this.tokenService.getCodigo();
+    this.clienteService.obtenerCliente(id).subscribe({
+      next: data => {
+        this.actualizarClienteDTO.email = data.respuesta.email;
+        this.actualizarClienteDTO.id = data.respuesta.id;
+        this.actualizarClienteDTO.nickname = data.respuesta.nickname;
+        this.actualizarClienteDTO.fotoPerfil = data.respuesta.fotoPerfil;
+        this.actualizarClienteDTO.nombre = data.respuesta.nombre;
+        this.actualizarClienteDTO.ciudadResidencia = data.respuesta.ciudadResidencia;
+
+
+      } 
+    })
+
   }
 
   public editarPerfil() {
@@ -51,20 +70,41 @@ export class EditarPerfilComponent {
 
 
   private cargarCiudades() {
-    this.ciudades = ["ARMENIA", "PEREIRA", "CALI", "MEDELLIN", "BOGOTA", "BUCARAMANGA", "CARTAGENA"];
+    this.publicoService.listarCiudades().subscribe({
+      next: (data) => {
+        this.ciudades = data.respuesta;
+        this.obtenerCliente();
+      },
+      error: (error) => {
+        console.log("Error al cargar las ciudades");
+      }
+    });
+
   }
 
   
 
   public cambiarContrasena() {
-    this.clienteService.cambiarPassword(this.cambioPasswordDTO).subscribe({
-      next: data => {
-        this.alerta = { mensaje: data.respuesta, tipo: "success" };
-      },
-      error: error => {
-        this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
-      }
-    });
+
+    const token =  this.tokenService.getToken();
+    
+    if( token!= null ){
+
+      this.cambioPasswordDTO.idCuenta = this.tokenService.getCodigo();
+      this.cambioPasswordDTO.token = token;
+
+      this.clienteService.cambiarPassword(this.cambioPasswordDTO).subscribe({
+        next: data => {
+          this.alerta = { mensaje: data.respuesta, tipo: "success" };
+        },
+        error: error => {
+          console.error('Error al cambiar la contraseña:', error);
+          this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
+        }
+      });
+
+    }
+
   }
 
 

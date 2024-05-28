@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MapaService } from '../../servicios/mapa.service';
 import { Router, RouterModule } from '@angular/router';
 import { ClienteService } from '../../servicios/cliente.service';
+import { ItemListaLugaresCreadosDTO } from '../../dto/cliente/itemListaLugaresCreadosDTO';
+import { PublicoService } from '../../servicios/publico.service';
+import { ItemNegocioDTO } from '../../dto/negocio/item-negocio-dto';
 
 
 @Component({
@@ -14,7 +17,19 @@ import { ClienteService } from '../../servicios/cliente.service';
 
 export class InicioComponent implements OnInit {
 
-  constructor(private mapaService: MapaService, private router: Router, private clienteService: ClienteService) {
+  negocios: ItemNegocioDTO[];
+
+  constructor(private mapaService: MapaService, private router: Router, private clienteService: ClienteService, private publicoServicio: PublicoService) {
+
+    this.negocios = [];
+
+
+    this.publicoServicio.listarNegocios().subscribe({
+      next: data => {
+        this.negocios = data.respuesta;
+        this.mapaService.pintarMarcadores(this.negocios);
+      }
+    })
 
   }
 

@@ -32,5 +32,9 @@ providedIn: 'root'
       return this.http.get<MensajeDTO>(`${this.publicUrl}/enviar-link-recuperacion-password-moderador/${linkRecuperacionDTO}`);
     }
 
+    listarNegocios(): Observable<MensajeDTO> {
+      return this.http.get<MensajeDTO>(`${this.publicUrl}/listar-negocios`);
+    }
+
 
 }
