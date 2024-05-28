@@ -8,11 +8,12 @@ import { ImagenService } from '../../servicios/imagen.service';
 import { Alerta } from '../../model/alerta';
 import { ClienteService } from '../../servicios/cliente.service';
 import { PublicoService } from '../../servicios/publico.service';
+import { AlertaComponent } from '../alerta/alerta.component';
 
 @Component({
   selector: 'app-editar-perfil',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, AlertaComponent],
   templateUrl: './editar-perfil.component.html',
   styleUrl: './editar-perfil.component.css'
 })
@@ -45,7 +46,7 @@ export class EditarPerfilComponent {
         this.actualizarClienteDTO.ciudadResidencia = data.respuesta.ciudadResidencia;
 
 
-      } 
+      }
     })
 
   }
@@ -82,12 +83,12 @@ export class EditarPerfilComponent {
 
   }
 
-  
+
 
   public cambiarContrasena() {
 
     const token =  this.tokenService.getToken();
-    
+
     if( token!= null ){
 
       this.cambioPasswordDTO.idCuenta = this.tokenService.getCodigo();

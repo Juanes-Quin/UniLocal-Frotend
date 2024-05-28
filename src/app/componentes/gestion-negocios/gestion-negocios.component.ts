@@ -28,7 +28,7 @@ public listarNegocios(){
 this.negocios = this.negocioService.listar();
 }*/
 
-public listarNegocios(){
+  public listarNegocios(){
   const codigoCliente = this.tokenService.getCodigo();
   this.clienteService.listarNegociosPropietario(codigoCliente).subscribe({
   next: (data) => {

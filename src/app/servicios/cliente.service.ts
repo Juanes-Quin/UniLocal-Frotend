@@ -46,8 +46,8 @@ export class ClienteService {
     return this.http.get<MensajeDTO>(`${this.userUrl}/mostrar-favoritos/${idCliente}`);
   }
 
-  public eliminarFavoritos(idClienteYNegocioDTO: IDClienteYNegocioDTO): Observable<MensajeDTO> {
-    return this.http.post<MensajeDTO>(`${this.userUrl}/eliminar-favoritos`, idClienteYNegocioDTO);
+  public eliminarFavoritos(idNegocio: string): Observable<MensajeDTO> {
+    return this.http.post<MensajeDTO>(`${this.userUrl}/eliminar-favoritos`, idNegocio);
   }
 
   public listarLugaresCreados(idClienteYNegocioDTO: IDClienteYNegocioDTO): Observable<MensajeDTO> {

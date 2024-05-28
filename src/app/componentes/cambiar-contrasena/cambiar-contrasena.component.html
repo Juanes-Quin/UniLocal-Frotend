@@ -1,0 +1,51 @@
+<body class="bg-primary">
+  <div id="layoutAuthentication">
+      <div id="layoutAuthentication_content">
+          <main>
+              <div class="container">
+                  <div class="row justify-content-center">
+                      <div class="col-lg-7">
+                          <div class="card shadow-lg border-0 rounded-lg mt-5">
+                              <div class="card-header">
+                                  <h5 class="text-center font-weight-light my-4">
+                                      <i class="fa-solid fa-user-plus me-3"></i>Editar perfil del cliente
+                                  </h5>
+                              </div>
+                              <div class="card-body">
+                                <!--ACÁ ESTA LA ALERTA-->
+                                <app-alerta [alerta]="alerta"></app-alerta>
+                                  <h5 class="mb-3">Cambiar La Contraseña</h5>
+                                  <form #formCambioPassword="ngForm">
+                                      <div class="mb-3">
+                                          <div class="form-floating">
+                                              <input class="form-control" id="inputEmailPassword" type="email" placeholder="name@example.com"
+                                                  email required name="correo" [(ngModel)]="cambioPasswordDTO.email">
+                                              <label for="inputEmailPassword">Correo</label>
+                                          </div>
+                                      </div>
+                                      <div class="mb-3">
+                                          <div class="form-floating">
+                                              <input class="form-control" id="inputPasswordNueva" type="password" placeholder="New Password"
+                                                  minlength="8" required name="password" [(ngModel)]="cambioPasswordDTO.passwordNueva">
+                                              <label for="inputPasswordNueva">Nueva Contraseña</label>
+                                          </div>
+                                      </div>
+                                      <div class="mt-4 mb-0">
+                                          <div class="d-grid">
+                                            <!--(click)="cambiarContrasena()-->
+                                              <button type="submit" class="btn btn-primary" [disabled]="formCambioPassword.invalid" (click)="cambiarContrasena()">
+                                                  <i class="fa-solid fa-key me-1"></i>Cambiar Contraseña
+                                              </button>
+                                          </div>
+                                      </div>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </main>
+      </div>
+  </div>
+</body>
+

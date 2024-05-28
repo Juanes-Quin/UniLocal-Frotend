@@ -12,6 +12,7 @@
                                   </h5>
                               </div>
                               <div class="card-body">
+                                <app-alerta [alerta]="alerta"></app-alerta>
                                   <form #formulario="ngForm">
                                       <div class="row mb-3">
                                           <div class="col-md-6">
@@ -68,32 +69,6 @@
                                           <div class="d-grid">
                                               <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid" (click)="editarPerfil()">
                                                   <i class="fa-solid fa-circle-plus me-1"></i>Enviar
-                                              </button>
-                                          </div>
-                                      </div>
-                                  </form>
-                                  <hr class="separator mt-4">
-                                  <h5 class="mb-3">Cambiar La Contraseña</h5>
-                                  <form #formCambioPassword="ngForm">
-                                      <div class="mb-3">
-                                          <div class="form-floating">
-                                              <input class="form-control" id="inputEmailPassword" type="email" placeholder="name@example.com"
-                                                  email required name="correo" [(ngModel)]="cambioPasswordDTO.email">
-                                              <label for="inputEmailPassword">Correo</label>
-                                          </div>
-                                      </div>
-                                      <div class="mb-3">
-                                          <div class="form-floating">
-                                              <input class="form-control" id="inputPasswordNueva" type="password" placeholder="New Password"
-                                                  minlength="8" required name="password" [(ngModel)]="cambioPasswordDTO.passwordNueva">
-                                              <label for="inputPasswordNueva">Nueva Contraseña</label>
-                                          </div>
-                                      </div>
-                                      <div class="mt-4 mb-0">
-                                          <div class="d-grid">
-                                            <!--(click)="cambiarContrasena()-->
-                                              <button type="submit" class="btn btn-primary" [disabled]="formCambioPassword.invalid" (click)="cambiarContrasena()">
-                                                  <i class="fa-solid fa-key me-1"></i>Cambiar Contraseña
                                               </button>
                                           </div>
                                       </div>

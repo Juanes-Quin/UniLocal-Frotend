@@ -11,6 +11,7 @@ import { FavoritosClienteComponent } from './componentes/favoritos-cliente/favor
 import { EditarPerfilComponent } from './componentes/editar-perfil/editar-perfil.component';
 import { ReservaComponent } from './componentes/reserva/reserva.component';
 import { RecuperarContrasenaComponent } from './componentes/recuperar-contrasena/recuperar-contrasena.component';
+import { CambiarContrasenaComponent } from './componentes/cambiar-contrasena/cambiar-contrasena.component';
 
 
 //imports de negocio
@@ -51,6 +52,7 @@ export const routes: Routes = [
     {path: 'registroAgenda', component: RegistroAgendaComponent},
     {path: 'favoritos', component: FavoritosClienteComponent},
     {path: 'editarPerfil', component: EditarPerfilComponent},
+    {path: 'cambiarContrasena', component: CambiarContrasenaComponent},
     //LOS DEL NEGOCIO
     {path: 'reserva', component: ReservaComponent},
     {path: 'gestionNegocios', component: GestionNegociosComponent},
