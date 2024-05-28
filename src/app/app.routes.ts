@@ -50,14 +50,11 @@ export const routes: Routes = [
     {path: 'agenda', component: AgendaComponent},
     {path: 'verDetalleAgenda/:codigo', component: VerDetalleAgendaComponent},
     {path: 'registroAgenda', component: RegistroAgendaComponent},
-<<<<<<< HEAD
     {path: 'favoritos', component: FavoritosClienteComponent},
     {path: 'editarPerfil', component: EditarPerfilComponent},
     {path: 'cambiarContrasena', component: CambiarContrasenaComponent},
-=======
     {path: 'favoritos', component: FavoritosClienteComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] }},
     {path: 'editarPerfil', component: EditarPerfilComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] }},
->>>>>>> 4431566385bad1173429431d4b42d64447a98cba
     //LOS DEL NEGOCIO
     {path: 'reserva', component: ReservaComponent},
     {path: 'gestionNegocios', component: GestionNegociosComponent},

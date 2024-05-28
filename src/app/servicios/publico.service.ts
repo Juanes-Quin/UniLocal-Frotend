@@ -3,6 +3,10 @@ import { Observable } from 'rxjs';
 import { MensajeDTO } from '../dto/MensajeDTO';
 import { HttpClient } from '@angular/common/http';
 import { LinkRecuperacionDTO } from '../dto/cuenta/link-recuperacion-dto';
+import { BusquedaNombreDTO } from '../dto/BusquedaNombreDTO';
+import { BusquedaCategoriaNegocioDTO } from '../dto/BusquedaCategoriaNegocioDTO';
+import { BusquedaDistanciaDTO } from '../dto/BusquedaDistanciaDTO';
+import { BusquedaEstadoNegocioDTO } from '../dto/BusquedaEstadoNegocioDTO';
 @Injectable({
 providedIn: 'root'
 })
