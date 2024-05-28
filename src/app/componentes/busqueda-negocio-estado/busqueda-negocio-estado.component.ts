@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, RouterModule} from '@angular/router';
-import { NegociosService } from '../../servicios/negocios.service';
 import { MapaService } from '../../servicios/mapa.service';
 import {ItemNegocioDTO} from "../../dto/negocio/item-negocio-dto";
 import {Alerta} from "../../model/alerta";
@@ -10,6 +9,7 @@ import {BusquedaEstadoNegocioDTO} from "../../dto/BusquedaEstadoNegocioDTO";
 import {BusquedaNombreDTO} from "../../dto/BusquedaNombreDTO";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
+import {PublicoService} from "../../servicios/publico.service";
 @Component({
   selector: 'app-busqueda',
   standalone: true,
@@ -27,7 +27,7 @@ export class BusquedaNegocioEstadoComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private negociosService: NegociosService,
+    private publicoService: PublicoService,
     private mapaService: MapaService
 
   ){
@@ -36,16 +36,15 @@ export class BusquedaNegocioEstadoComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.textoBusqueda = params['texto']});
     this.busquedaEstadoNegocioDTO = new BusquedaEstadoNegocioDTO(this.textoBusqueda);
-
+    this.buscarNegocioEstado();
 
   }
 
   public buscarNegocioEstado() {
-    this.negociosService.filtrarPorEstado(this.busquedaEstadoNegocioDTO).subscribe({
+    this.publicoService.filtrarPorEstado(this.busquedaEstadoNegocioDTO).subscribe({
       next: (data) => {
-        this.alerta = new Alerta(data.nombre, "success");
+        this.alerta = new Alerta(data.respuesta, "success");
         // Asignar los resultados de la búsqueda a la propiedad 'resultados'
-        this.resultados.push(data);
       },
       error: (error) => {
         this.alerta = new Alerta("Error al buscar negocio por estado", "danger");

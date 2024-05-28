@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, RouterModule} from '@angular/router';
-import { NegociosService } from '../../servicios/negocios.service';
 import { MapaService } from '../../servicios/mapa.service';
 import {ItemNegocioDTO} from "../../dto/negocio/item-negocio-dto";
 import {Alerta} from "../../model/alerta";
@@ -10,6 +9,8 @@ import {BusquedaEstadoNegocioDTO} from "../../dto/BusquedaEstadoNegocioDTO";
 import {BusquedaNombreDTO} from "../../dto/BusquedaNombreDTO";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
+import {AlertaComponent} from "../alerta/alerta.component";
+import {PublicoService} from "../../servicios/publico.service";
 @Component({
   selector: 'app-busqueda',
   standalone: true,
@@ -26,8 +27,9 @@ export class BusquedaNegocioNombreComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private negociosService: NegociosService,
-    private mapaService: MapaService
+    private publicoService: PublicoService,
+    private mapaService: MapaService,
+
 
   ){
     this.resultados = [];
@@ -35,21 +37,20 @@ export class BusquedaNegocioNombreComponent implements OnInit {
     this.route.params.subscribe(params => {
     this.textoBusqueda = params['texto']});
     this.busquedaNombreDTO = new BusquedaNombreDTO(this.textoBusqueda);
-
+    this.buscarNegocioNombre();
   }
 
   public buscarNegocioNombre() {
-    this.negociosService.buscarNegocioNombre(this.busquedaNombreDTO).subscribe({
+    this.publicoService.buscarNegocioNombre(this.busquedaNombreDTO).subscribe({
       next: (data) => {
-        this.alerta = new Alerta(data.nombre, "success");
-        // Asignar los resultados de la búsqueda a la propiedad 'resultados'
-        this.resultados.push(data);
+        this.resultados = data.respuesta;
       },
       error: (error) => {
-        this.alerta = new Alerta("Error al buscar negocio por nombre", "danger");
+        this.alerta = new Alerta("danger", "Error al buscar los negocios");
       }
     });
   }
+
 
 
   ngOnInit(): void {

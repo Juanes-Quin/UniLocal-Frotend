@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, RouterModule} from '@angular/router';
-import { NegociosService } from '../../servicios/negocios.service';
 import { MapaService } from '../../servicios/mapa.service';
 import {ItemNegocioDTO} from "../../dto/negocio/item-negocio-dto";
 import {Alerta} from "../../model/alerta";
@@ -8,6 +7,7 @@ import {BusquedaCategoriaNegocioDTO} from "../../dto/BusquedaCategoriaNegocioDTO
 
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
+import {PublicoService} from "../../servicios/publico.service";
 @Component({
   selector: 'app-busqueda',
   standalone: true,
@@ -24,7 +24,7 @@ export class BusquedaNegocioCategoriaComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private negociosService: NegociosService,
+    private publicoService: PublicoService,
     private mapaService: MapaService
 
   ){
@@ -33,15 +33,14 @@ export class BusquedaNegocioCategoriaComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.textoBusqueda = params['texto']});
     this.busquedaCategoriaNegocioDTO = new BusquedaCategoriaNegocioDTO(this.textoBusqueda);
-
+    this.buscarNegocioCategoria()
   }
 
   public buscarNegocioCategoria() {
-    this.negociosService.buscarNegocioCategoria(this.busquedaCategoriaNegocioDTO).subscribe({
+    this.publicoService.buscarNegocioCategoria(this.busquedaCategoriaNegocioDTO).subscribe({
       next: (data) => {
-        this.alerta = new Alerta(data.nombre, "success");
+        this.alerta = new Alerta(data.respuesta, "success");
         // Asignar los resultados de la búsqueda a la propiedad 'resultados'
-        this.resultados.push(data);
       },
       error: (error) => {
         this.alerta = new Alerta("Error al buscar negocio por categoria", "danger");
@@ -52,9 +51,8 @@ export class BusquedaNegocioCategoriaComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.mapaService.crearMapa();
+
     this.buscarNegocioCategoria();
-    this.mapaService.pintarMarcadores(this.resultados);
   }
 
 }
