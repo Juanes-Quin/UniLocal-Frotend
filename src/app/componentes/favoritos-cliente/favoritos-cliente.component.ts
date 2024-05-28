@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 
+import { TokenService } from '../../servicios/token.service';
+import { ClienteService } from '../../servicios/cliente.service';
+
 @Component({
   selector: 'app-favoritos-cliente',
   standalone: true,
@@ -13,20 +16,39 @@ import { RouterModule, Router } from '@angular/router';
 })
 export class FavoritosClienteComponent {
 
-  private favoritosDTO: FavoritoDTO[] = [];
+  favoritosDTO: FavoritoDTO[];
+  clienteFavoritos: FavoritoDTO;
 
-  constructor(){
+  constructor(private clienteService: ClienteService, private tokenService: TokenService){
+    this.favoritosDTO = [];
+    this.clienteFavoritos = new FavoritoDTO();
 
+    this.listarNegocios();
   }
 
-  obtenerFavoritos(): FavoritoDTO[] {
-    return this.favoritosDTO;
-  }
+  public listarNegocios(){
+    const codigoCliente = this.tokenService.getCodigo();
+    this.clienteService.mostrarFavoritos(codigoCliente).subscribe({
+    next: (data) => {
+    this.favoritosDTO = data.respuesta;
+    },
+    error: (error) => {
+    console.error(error);
+    }
+    });
+    }
 
-  agregarFavorito(): void {
-  }
+    public eliminarFavorito(){
 
-  eliminarFavorito(): void {
+      let codigo = this.tokenService.getCodigo();
+      this.clienteService.eliminarFavoritos(codigo).subscribe({
+        next: data => {
+          this.clienteFavoritos.idNegocio = data.respuesta;
+        },
+        error: error => {
+          console.log(error);
+        }
+      });
 
   }
 }

@@ -13,11 +13,10 @@
                                 </div>
                                 <div class="card-body">
                                     <form #formulario="ngForm">
-                                        <app-alerta [alerta]="alerta"></app-alerta>
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control readonly-field" id="inputId" type="text" placeholder="Enter your ID" required name="id" [(ngModel)]="actualizarClienteDTO.id" readonly>
+                                                    <input class="form-control" id="inputId" type="text" placeholder="Enter your ID" required name="id" [(ngModel)]="actualizarClienteDTO.id">
                                                     <label for="inputId">ID</label>
                                                 </div>
                                             </div>
@@ -50,7 +49,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-floating">
-                                                <input class="form-control readonly-field" id="inputNickname" type="text" placeholder="Enter your username" maxlength="30" required name="nickname" [(ngModel)]="actualizarClienteDTO.nickname" readonly>
+                                                <input class="form-control" id="inputNickname" type="text" placeholder="Enter your username" maxlength="30" required name="nickname" [(ngModel)]="actualizarClienteDTO.nickname">
                                                 <label for="inputNickname">Username</label>
                                             </div>
                                         </div>

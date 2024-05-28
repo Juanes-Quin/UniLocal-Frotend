@@ -11,6 +11,7 @@ import { FavoritosClienteComponent } from './componentes/favoritos-cliente/favor
 import { EditarPerfilComponent } from './componentes/editar-perfil/editar-perfil.component';
 import { ReservaComponent } from './componentes/reserva/reserva.component';
 import { RecuperarContrasenaComponent } from './componentes/recuperar-contrasena/recuperar-contrasena.component';
+import { CambiarContrasenaComponent } from './componentes/cambiar-contrasena/cambiar-contrasena.component';
 
 
 //imports de negocio
@@ -49,24 +50,30 @@ export const routes: Routes = [
     {path: 'agenda', component: AgendaComponent},
     {path: 'verDetalleAgenda/:codigo', component: VerDetalleAgendaComponent},
     {path: 'registroAgenda', component: RegistroAgendaComponent},
+<<<<<<< HEAD
     {path: 'favoritos', component: FavoritosClienteComponent},
     {path: 'editarPerfil', component: EditarPerfilComponent},
+    {path: 'cambiarContrasena', component: CambiarContrasenaComponent},
+=======
+    {path: 'favoritos', component: FavoritosClienteComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] }},
+    {path: 'editarPerfil', component: EditarPerfilComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] }},
+>>>>>>> 4431566385bad1173429431d4b42d64447a98cba
     //LOS DEL NEGOCIO
     {path: 'reserva', component: ReservaComponent},
     {path: 'gestionNegocios', component: GestionNegociosComponent},
     {path: 'negocios', component: NegociosComponent},
     {path: 'actualizarNegocio/codigo', component: ActualizarNegocioComponent},
     {path: 'detalleNegocio/codigo', component: DetalleNegocioComponent},
-    {path: 'misNegocios/codigo', component: MisNegociosComponent},
+    {path: 'misNegocios/codigo', component: MisNegociosComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] }},
 
     //esta comentado mientras se diseña, despues es necesario descomentarlo
     //para que solo los clientes puedan ver sus negocios
-    //{path: 'misNegocios', component: MisNegociosComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] } },
+    {path: 'misNegocios', component: MisNegociosComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] } },
 
 
-    /*{path: 'crearNegocio', component: CrearNegocioComponent, canActivate: [RolesGuard], data: {
-        expectedRole: ["CLIENTE"] } }*/
-    {path: 'crearNegocio', component: CrearNegocioComponent},
+    {path: 'crearNegocio', component: CrearNegocioComponent, canActivate: [RolesGuard], data: {
+        expectedRole: ["CLIENTE"] } },
+
 
 
     {path: 'detalleNegocio/:codigo', component: VerDetalleNegocioComponent},

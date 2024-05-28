@@ -37,6 +37,29 @@ providedIn: 'root'
     listarNegocios(): Observable<MensajeDTO> {
       return this.http.get<MensajeDTO>(`${this.publicUrl}/listar-negocios`);
     }
+  buscarNegocio(codigoNegocio: string): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio/${codigoNegocio}`);
+  }
+
+  buscarNegocioNombre(busquedaNombreDTO: BusquedaNombreDTO): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-nombre/${busquedaNombreDTO}`);
+  }
+
+  buscarNegocioCategoria(categoria: BusquedaCategoriaNegocioDTO): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-categoria/${categoria}`);
+  }
+
+  buscarNegocioDistancia(busquedaDistanciaDTO: BusquedaDistanciaDTO): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-distancia/${busquedaDistanciaDTO}`);
+  }
+
+  filtrarPorEstado(estadoNegocio: BusquedaEstadoNegocioDTO): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.publicUrl}/filtar-estado/${estadoNegocio}`);
+  }
+
+  listarComentariosNegocio(idNegocio: string): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.publicUrl}/listar-comentarios-negocio/${idNegocio}`);
+  }
 
 
 }
