@@ -49,7 +49,7 @@ providedIn: 'root'
     return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-nombre/${busquedaNombreDTO}`);
   }
 
-  buscarNegocioCategoria(categoria: BusquedaCategoriaNegocioDTO): Observable<MensajeDTO> {
+  buscarNegocioCategoria(categoria: string): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-categoria/${categoria}`);
   }
 
@@ -64,6 +64,4 @@ providedIn: 'root'
   listarComentariosNegocio(idNegocio: string): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.publicUrl}/listar-comentarios-negocio/${idNegocio}`);
   }
-
-
 }

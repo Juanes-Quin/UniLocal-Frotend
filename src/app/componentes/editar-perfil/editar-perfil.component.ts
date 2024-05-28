@@ -52,19 +52,11 @@ export class EditarPerfilComponent {
     
     this.clienteService.actualizarCliente(this.actualizarClienteDTO).subscribe({
       next: data => {
-        this.actualizarClienteDTO.nombre = data.respuesta.nombre;
-        this.actualizarClienteDTO.fotoPerfil = data.respuesta.fotoPerfil;
-        this.actualizarClienteDTO.email = data.respuesta.email;
-        this.actualizarClienteDTO.ciudadResidencia = data.respuesta.ciudadResidencia;
-
-        this.alerta = { mensaje: "Datos actualizados correctamente",tipo:"success"};
+        this.alerta = new Alerta("Datos actualizados correctamente", "success");
       },
       error: error => {
         if (error.status === 400) {
-          const errorMessage = error.error.mensaje;
-          if (errorMessage.includes("El correo ya se encuentra registrado")) {
-            this.alerta = new Alerta("El correo ya se encuentra registrado. Por favor, ingrese un nuevo correo.", "danger");
-          }
+            this.alerta = new Alerta(error.error.mensaje, "danger");
         } else {
           this.alerta = new Alerta("Error al editar el perfil. Por favor, intente nuevamente.", "danger");
         }

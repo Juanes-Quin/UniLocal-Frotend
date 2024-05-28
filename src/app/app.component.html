@@ -19,6 +19,8 @@
         <ul class="dropdown-menu" aria-labelledby="misNegociosDropdown">
 
           <li><a routerLink="/agenda" class="nav-link px-2">Agenda</a></li>
+          <li><a routerLink="/misNegocios" class="nav-link px-2">negocios</a></li>
+          <li><a routerLink="/favoritos" class="nav-link px-2">Favoritos</a></li>
         </ul>
       </li>
       <!-- Mi cuenta dropdown -->
@@ -43,8 +45,6 @@
       } @else {
         <label class="me-3">Hola {{email}}</label>
         <button type="button" (click)="logout()" class="btn btn-primary">Logout</button>
-        <li><a routerLink="/misNegocios/:codigo" class="nav-link px-2">negocios</a></li>
-        <li><a routerLink="/favoritos/:codigo" class="nav-link px-2">Favoritos</a></li>
       }
     </div>
   </header>

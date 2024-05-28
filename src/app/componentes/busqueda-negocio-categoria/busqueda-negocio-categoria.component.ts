@@ -37,7 +37,7 @@ export class BusquedaNegocioCategoriaComponent implements OnInit {
   }
 
   public buscarNegocioCategoria() {
-    this.publicoService.buscarNegocioCategoria(this.busquedaCategoriaNegocioDTO).subscribe({
+    this.publicoService.buscarNegocioCategoria(this.textoBusqueda).subscribe({
       next: (data) => {
         this.alerta = new Alerta(data.respuesta, "success");
         // Asignar los resultados de la búsqueda a la propiedad 'resultados'
