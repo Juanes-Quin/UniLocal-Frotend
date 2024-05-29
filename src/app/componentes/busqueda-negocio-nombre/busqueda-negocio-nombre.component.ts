@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, RouterModule} from '@angular/router';
-import { MapaService } from '../../servicios/mapa.service';
 import {ItemNegocioDTO} from "../../dto/negocio/item-negocio-dto";
 import {Alerta} from "../../model/alerta";
 
-import {BusquedaNombreDTO} from "../../dto/BusquedaNombreDTO";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {PublicoService} from "../../servicios/publico.service";
@@ -24,21 +22,27 @@ export class BusquedaNegocioNombreComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private publicoService: PublicoService,
-    private mapaService: MapaService
+    private publicoService: PublicoService
 
 
   ){
     this.resultados = [];
     this.textoBusqueda = "";
     this.route.params.subscribe(params => {
-    this.textoBusqueda = params['texto']});
+      this.textoBusqueda = params['texto']});
     this.buscarNegocioNombre();
   }
+
+  ngOnInit(): void {
+
+    this.buscarNegocioNombre();
+  }
+
 
   public buscarNegocioNombre() {
     this.publicoService.buscarNegocioNombre(this.textoBusqueda).subscribe({
       next: (data) => {
+        // Asignar los resultados de la búsqueda a la propiedad 'resultados'
         this.resultados = data.respuesta;
       },
       error: (error) => {
@@ -49,10 +53,6 @@ export class BusquedaNegocioNombreComponent implements OnInit {
 
 
 
-  ngOnInit(): void {
-    this.mapaService.crearMapa();
-    this.buscarNegocioNombre();
-    this.mapaService.pintarMarcadores(this.resultados);
-  }
+
 
 }
