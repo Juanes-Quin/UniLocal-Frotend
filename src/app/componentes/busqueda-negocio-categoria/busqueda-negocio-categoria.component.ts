@@ -16,31 +16,36 @@ import {PublicoService} from "../../servicios/publico.service";
   styleUrl: './busqueda-negocio-categoria.component.css'
 })
 export class BusquedaNegocioCategoriaComponent implements OnInit {
-  busquedaCategoriaNegocioDTO: BusquedaCategoriaNegocioDTO;
   textoBusqueda: string;
   resultados: ItemNegocioDTO[];
   alerta!: Alerta;
 
-
   constructor(
     private route: ActivatedRoute,
     private publicoService: PublicoService,
-    private mapaService: MapaService
 
   ){
     this.resultados = [];
     this.textoBusqueda = "";
     this.route.params.subscribe(params => {
       this.textoBusqueda = params['texto']});
-    this.busquedaCategoriaNegocioDTO = new BusquedaCategoriaNegocioDTO(this.textoBusqueda);
     this.buscarNegocioCategoria()
+
+
   }
+
+  ngOnInit(): void {
+
+    this.buscarNegocioCategoria();
+  }
+
 
   public buscarNegocioCategoria() {
     this.publicoService.buscarNegocioCategoria(this.textoBusqueda).subscribe({
       next: (data) => {
         this.alerta = new Alerta(data.respuesta, "success");
         // Asignar los resultados de la búsqueda a la propiedad 'resultados'
+        this.resultados = data.respuesta;
       },
       error: (error) => {
         this.alerta = new Alerta("Error al buscar negocio por categoria", "danger");
@@ -50,9 +55,6 @@ export class BusquedaNegocioCategoriaComponent implements OnInit {
 
 
 
-  ngOnInit(): void {
 
-    this.buscarNegocioCategoria();
-  }
 
 }

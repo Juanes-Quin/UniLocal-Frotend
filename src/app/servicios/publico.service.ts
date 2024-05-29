@@ -28,7 +28,7 @@ providedIn: 'root'
       return this.http.post<MensajeDTO>(`${this.publicUrl}/enviar-link-recuperacion-password`, linkRecuperacionDTO);
     }
 
-   /** 
+   /**
     * enviarLinkRecuperacionCliente(linkRecuperacionDTO: LinkRecuperacionDTO): Observable<MensajeDTO> {
       return this.http.get<MensajeDTO>(`${this.publicUrl}/enviar-link-recuperacion-password-cliente/${linkRecuperacionDTO}`);
     }
@@ -36,7 +36,7 @@ providedIn: 'root'
     enviarLinkRecuperacionModerador(linkRecuperacionDTO: LinkRecuperacionDTO): Observable<MensajeDTO> {
       return this.http.get<MensajeDTO>(`${this.publicUrl}/enviar-link-recuperacion-password-moderador/${linkRecuperacionDTO}`);
     }
-    * */ 
+    * */
 
     listarNegocios(): Observable<MensajeDTO> {
       return this.http.get<MensajeDTO>(`${this.publicUrl}/listar-negocios`);
@@ -45,20 +45,20 @@ providedIn: 'root'
     return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio/${codigoNegocio}`);
   }
 
-  buscarNegocioNombre(busquedaNombreDTO: BusquedaNombreDTO): Observable<MensajeDTO> {
-    return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-nombre/${busquedaNombreDTO}`);
+  buscarNegocioNombre(nombre: String): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-nombre/${nombre}`);
   }
 
-  buscarNegocioCategoria(categoria: string): Observable<MensajeDTO> {
-    return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-categoria/${categoria}`);
+  buscarNegocioCategoria(categoriaNegocioDTO: string): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-categoria/${categoriaNegocioDTO}`);
   }
 
   buscarNegocioDistancia(busquedaDistanciaDTO: BusquedaDistanciaDTO): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-distancia/${busquedaDistanciaDTO}`);
   }
 
-  filtrarPorEstado(estadoNegocio: BusquedaEstadoNegocioDTO): Observable<MensajeDTO> {
-    return this.http.get<MensajeDTO>(`${this.publicUrl}/filtar-estado/${estadoNegocio}`);
+    filtrarPorEstado(estadoNegocio: string): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.publicUrl}/filtrar-estado/${estadoNegocio}`);
   }
 
   listarComentariosNegocio(idNegocio: string): Observable<MensajeDTO> {

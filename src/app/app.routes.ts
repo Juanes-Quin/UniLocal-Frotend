@@ -54,7 +54,7 @@ export const routes: Routes = [
     {path: 'verDetalleAgenda/:codigo', component: VerDetalleAgendaComponent},
     {path: 'registroAgenda', component: RegistroAgendaComponent},
     {path: 'favoritos', component: FavoritosClienteComponent},
-    {path: 'editarPerfil', component: EditarPerfilComponent},
+    {path: 'editarPerfil', component: EditarPerfilComponent, canActivate:[RolesGuard], data: {expectedRole: ["CLIENTE"] }},
     {path: 'cambiarContrasena', component: CambiarContrasenaComponent},
     {path: 'favoritos', component: FavoritosClienteComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] }},
     {path: 'editarPerfil', component: EditarPerfilComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] }},
