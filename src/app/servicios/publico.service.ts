@@ -45,7 +45,7 @@ providedIn: 'root'
     return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio/${codigoNegocio}`);
   }
 
-  buscarNegocioNombre(nombre: String): Observable<MensajeDTO> {
+  buscarNegocioNombre(nombre: string): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-nombre/${nombre}`);
   }
 
@@ -57,7 +57,7 @@ providedIn: 'root'
     return this.http.get<MensajeDTO>(`${this.publicUrl}/buscar-negocio-distancia/${busquedaDistanciaDTO}`);
   }
 
-    filtrarPorEstado(estadoNegocio: string): Observable<MensajeDTO> {
+  filtrarPorEstado(estadoNegocio: string): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.publicUrl}/filtrar-estado/${estadoNegocio}`);
   }
 
