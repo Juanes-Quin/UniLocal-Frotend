@@ -31,16 +31,15 @@ export class RecuperarContrasenaComponent {
       
       this.publicoService.enviarLinkRecuperacion(linkRecuperacionDTO).subscribe({
         next: data => {
-          this.alerta = { mensaje: "Se envió un link de recuperación a su cuenta", tipo: "success" };
-          this.cambioPasswordDTO.email = '';
-          this.cambioPasswordDTO.passwordNueva = '';
+          this.alerta = new Alerta("Se envió un link de recuperación a su cuenta", "success" );
+          
         },
         error: error => {
-          this.alerta = { mensaje: "Error al enviar el link de recuperación. Por favor, verifique su correo electrónico.", tipo: "danger" };
+          this.alerta = new Alerta("Error al enviar el link de recuperación. Por favor, verifique su correo electrónico.", "danger" );
         }
       });
     } else {
-      this.alerta = { mensaje: "Debe ingresar un correo electrónico válido", tipo: "danger" };
+      this.alerta = new Alerta("Debe ingresar un correo electrónico válido", "danger" );
     }
   }
 

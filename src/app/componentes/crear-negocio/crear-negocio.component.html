@@ -1,76 +1,71 @@
 <div class="card">
-
     <div class="card-header ps-5 pt-4 pb-4">
-        <h5 class="mb-0"><i class="fa-solid fa-location-dot me-2"></i>Crear un nuevo negocio
-        </h5>
+        <h5 class="mb-0"><i class="fa-solid fa-location-dot me-2"></i>Crear un nuevo negocio</h5>
     </div>
     <div class="card-body p-5">
         <form #f="ngForm">
             <div class="mb-3 row">
-                <label class="col-sm-2 col-form-label">Nombre: </label>
+                <label class="col-sm-2 col-form-label">Nombre:</label>
                 <div class="col-sm-10">
                     <input #nombre="ngModel" class="form-control" [ngClass]="nombre.invalid && nombre.dirty ? 'is-invalid' : ''" type="text" name="nombre" [(ngModel)]="registroNegocioDTO.nombre" required />
                 </div>
             </div>
             <div class="mb-3 row">
-                <label class="col-sm-2 col-form-label">Descripción: </label>
+                <label class="col-sm-2 col-form-label">Descripción:</label>
                 <div class="col-sm-10">
                     <textarea #descripcion="ngModel" [ngClass]="descripcion.invalid && descripcion.dirty ? 'is-invalid' : ''" type="text" [(ngModel)]="registroNegocioDTO.descripcion" name="descripcion" required class="form-control"></textarea>
                 </div>
             </div>
             <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">Ubicación: </label>
-            <div class="col-sm-10">
-              <div id="mapa"></div>
+                <label class="col-sm-2 col-form-label">Ubicación:</label>
+                <div class="col-sm-10">
+                    <div id="mapa"></div>
+                </div>
             </div>
-          </div>
             <div class="mb-3 row">
-                <label class="col-sm-2 col-form-label">Imágenes: </label>
+                <label class="col-sm-2 col-form-label">Imágenes:</label>
                 <div class="col-sm-10">
                     <input class="form-control" type="file" name="imagenes" (change)="onFileChange($event)" multiple required />
                 </div>
             </div>
             <div class="mb-3 row">
-                <label class="col-sm-2 col-form-label">Tipo: </label>
+                <label class="col-sm-2 col-form-label">Tipo:</label>
                 <div class="col-sm-10">
                     <select name="tipo" required class="form-select" [(ngModel)]="registroNegocioDTO.categoriaNegocio">
-                      <option *ngFor="let item of tipo" [value]="item">{{ item }}</option>
+                        <option *ngFor="let item of tipo" [value]="item">{{ item }}</option>
                     </select>
                 </div>
             </div>
+
             <div class="mb-3 row">
-                <label class="col-sm-2 col-form-label">Horarios: </label>
+                <label class="col-sm-2 col-form-label">Horarios:</label>
                 <div class="col-sm-8">
-                    @for (item of horarios; track $index) {
-                    <div class="row mb-2 ">
+                    <div *ngFor="let horario of horarios; let i = index" class="row mb-2">
                         <div class="col">
-                            <input class="form-control" placeholder="Día" type="text" name="dia-{{$index}}" [(ngModel)]="item.dia" required />
+                            <input class="form-control" placeholder="Horario" type="text" name="horario-{{i}}" [(ngModel)]="horarios[i]" required />
                         </div>
                         <div class="col">
-                            <input class="form-control" placeholder="Hora Inicio" type="time" name="horaInicio-{{$index}}" [(ngModel)]="item.horaInicio" required />
-                        </div>
-                        <div class="col">
-                            <input class="form-control" placeholder="Hora Fin" type="time" name="horaFin-{{$index}}" [(ngModel)]="item.horaFin" required />
+                            <button type="button" class="btn btn-primary" (click)="eliminarHorario(i)">
+                                <i class="fa-solid fa-circle-minus me-1"></i>Eliminar horario
+                            </button>
                         </div>
                     </div>
-                    }
                 </div>
-                <div class="col-sm-2 text-end ">
-                    <button class="btn btn-primary" (click)="agregarHorario()">
-                <i class="fa-solid fa-circle-plus me-1"></i>Agregar horario
-                </button>
+                <div class="col-sm-2 text-end">
+                    <button type="button" class="btn btn-primary" (click)="agregarHorario()">
+                        <i class="fa-solid fa-circle-plus me-1"></i>Agregar horario
+                    </button>
                 </div>
             </div>
             <div class="mb-3 row">
-                <label class="col-sm-2 col-form-label">Teléfonos: </label>
+                <label class="col-sm-2 col-form-label">Teléfonos:</label>
                 <div class="col-sm-10">
-                    <!--Completar (se puede basar en lo hecho con los horarios)-->
-                    <input class="form-control" id="inputTelefono" type="text" placeholder="Ingrese el teléfono" required="true" name="telefono" [(ngModel)]="registroNegocioDTO.telefono">
+                    <input class="form-control" id="inputTelefono" type="text" placeholder="Ingrese el teléfono" required name="telefono" [(ngModel)]="registroNegocioDTO.telefono">
                 </div>
             </div>
-            <button class="btn btn-primary" (click)="crearNegocio()" [disabled]="f.invalid">
+            <button type="button" class="btn btn-primary" (click)="crearNegocio()" [disabled]="f.invalid">
                 <i class="fa-solid fa-circle-plus me-1"></i>Crear negocio
-                </button>
+            </button>
         </form>
     </div>
 </div>

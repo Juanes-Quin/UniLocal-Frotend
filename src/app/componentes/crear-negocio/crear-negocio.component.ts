@@ -1,36 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RegistroNegocioDTO } from '../../dto/negocio/RegistroNegocioDTO';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { Horario } from '../../model/horario';
 import { ClienteService } from '../../servicios/cliente.service';
-import {MapaService} from "../../servicios/mapa.service";
-import { AlertaComponent } from '../alerta/alerta.component';
+import { MapaService } from '../../servicios/mapa.service';
 import { Alerta } from '../../model/alerta';
-import { AuthService } from '../../servicios/auth.service';
+import { TokenService } from '../../servicios/token.service';
+import { FormsModule } from '@angular/forms';
+
+
+
 
 @Component({
   selector: 'app-crear-negocio',
-  standalone: true,
-  imports: [FormsModule, CommonModule, AlertaComponent],
   templateUrl: './crear-negocio.component.html',
   styleUrls: ['./crear-negocio.component.css']
 })
-export class CrearNegocioComponent {
+export class CrearNegocioComponent implements OnInit {
   registroNegocioDTO: RegistroNegocioDTO;
   tipo: string[];
-  horarios: Horario[];
+  horarios: string[] = [];
   archivos!: FileList[];
   alerta!: Alerta;
 
-  constructor(private clienteService: ClienteService, private authService: AuthService, private mapaService: MapaService) {
+  constructor(private clienteService: ClienteService, private mapaService: MapaService, private tokenService: TokenService) {
     this.registroNegocioDTO = new RegistroNegocioDTO();
-    this.horarios = [new Horario()];
-    this.tipo =[];
-    this.cargarTipo();
+    this.tipo = [];
   }
 
   ngOnInit(): void {
+    this.cargarTipo();
     this.mapaService.crearMapa();
     this.mapaService.agregarMarcador().subscribe((marcador) => {
       this.registroNegocioDTO.ubicacion.latitud = marcador.lat;
@@ -38,34 +35,36 @@ export class CrearNegocioComponent {
     });
   }
 
-  agregarTelefono() {
-    if (!this.registroNegocioDTO.telefono) {
-      this.registroNegocioDTO.telefono = [];
+  /*public crearNegocio() {
+    const id = this.tokenService.getCodigo();
+
+    let horariosString = '';
+    for (let i = 0; i < this.horarios.length; i++) {
+      horariosString += this.horarios[i] + ';';
     }
-    this.registroNegocioDTO.telefono.push('');
-  }
 
-  eliminarTelefono(index: number) {
-    this.registroNegocioDTO.telefono.splice(index, 1);
-  }
+    this.registroNegocioDTO.horarios = horariosString;
 
-  public crearNegocio() {
-    this.registroNegocioDTO.horarios = this.horarios;
     this.clienteService.crearNegocio(this.registroNegocioDTO).subscribe({
       next: (data) => {
         this.alerta = new Alerta(data.respuesta, "success");
       },
       error: (error) => {
-          this.alerta = new Alerta("Error al crear el negocio, intente nuevamente.", "danger");
-
+        if (error.status === 400) {
+          this.alerta = new Alerta(error, "danger");
+        }
       }
-
     });
     console.log(this.registroNegocioDTO);
   }
+  */
 
   public agregarHorario() {
-    this.horarios.push(new Horario());
+    this.horarios.push('');
+  }
+
+  public eliminarHorario(index: number) {
+    this.horarios.splice(index, 1);
   }
 
   public onFileChange(event: any) {
@@ -85,7 +84,7 @@ export class CrearNegocioComponent {
         this.tipo = data.respuesta;
       },
       error: (error) => {
-        console.log("Error al cargar los tipos");
+        console.log("Error al cargar los tipos de Negocio");
       }
     });
   }
