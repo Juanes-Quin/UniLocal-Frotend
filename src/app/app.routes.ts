@@ -27,6 +27,9 @@ import { AgendaComponent } from './componentes/agenda/agenda.component';
 import { VerDetalleAgendaComponent } from './componentes/ver-detalle-agenda/ver-detalle-agenda.component';
 import { RegistroAgendaComponent } from './componentes/registro-agenda/registro-agenda.component';
 
+//imports moderador
+import { VistaModeradorComponent } from './componentes/vista-moderador/vista-moderador.component';
+
 
 //modules
 import { NgModule, Component } from '@angular/core';
@@ -62,6 +65,9 @@ export const routes: Routes = [
     {path: 'actualizarNegocio/codigo', component: ActualizarNegocioComponent},
     {path: 'detalleNegocio/codigo', component: DetalleNegocioComponent},
     {path: 'misNegocios', component: MisNegociosComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] }},
+
+    //MODERADOR
+    {path: 'vistaModerador', component: VistaModeradorComponent},
 
     //esta comentado mientras se diseña, despues es necesario descomentarlo
     //para que solo los clientes puedan ver sus negocios

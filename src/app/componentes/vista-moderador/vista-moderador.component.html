@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-body p-5">
+    <div class="card-header ps-5 pt-4 pb-4">
+      <h5 class="mb-0"><i class="fa-solid fa-location-dot me-3"></i>Gestión de negocios</h5>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover table-responsive">
+        <thead>
+          <tr>
+            <th>Código Negocio</th>
+            <th>Descripción</th>
+            <th>Código Moderador</th>
+            <th>Respuesta</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr *ngFor="let negocio of revisionDTO; let i = index">
+            <td>
+              <p>{{ negocio.codigoNegocio }}</p>
+            </td>
+            <td>
+              <p>{{ negocio.descripcion }}</p>
+            </td>
+            <td>
+              <p>{{ negocio.codigoModerador }}</p>
+            </td>
+            <td>
+              <p>{{ negocio.respuesta }}</p>
+            </td>
+            <td>
+              <button type="button" class="btn btn-success me-2" (click)="aprobarNegocio(i)"><i class="fa-solid fa-check me-1"></i> Aprobar</button>
+              <button type="button" class="btn btn-danger" (click)="rechazarNegocio(i)"><i class="fa-solid fa-times me-1"></i> Rechazar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

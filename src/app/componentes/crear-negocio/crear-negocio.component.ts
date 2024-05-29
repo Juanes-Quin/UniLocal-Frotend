@@ -56,20 +56,8 @@ export class CrearNegocioComponent {
         this.alerta = new Alerta(data.respuesta, "success");
       },
       error: (error) => {
-        if (error.status === 400) {
-          const errorMessage = error.error.mensaje;
-          if (errorMessage.includes("Ingrese el nombre del negocio")) {
-            this.alerta = new Alerta("por favor ingrese la descripcion del negocio", "danger");
-          } else if (errorMessage.includes("Ingrese sus imagenes del negocio")) {
-            this.alerta = new Alerta("suba minimo una imagen.", "danger");
-          } else if (errorMessage.includes("Elija su necogio")) {
-            this.alerta = new Alerta("que tipo es su negocio.", "danger");
-          }else {
-            this.alerta = new Alerta(error.error.respuesta, "danger");
-          }
-        } else {
           this.alerta = new Alerta("Error al crear el negocio, intente nuevamente.", "danger");
-        }
+
       }
 
     });
