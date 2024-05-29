@@ -18,7 +18,6 @@ import { CambiarContrasenaComponent } from './componentes/cambiar-contrasena/cam
 import { GestionNegociosComponent } from './componentes/gestion-negocios/gestion-negocios.component';
 import { NegociosComponent } from './componentes/negocios/negocios.component';
 import { ActualizarNegocioComponent } from './componentes/actualizar-negocio/actualizar-negocio.component';
-import { CrearNegocioComponent } from './componentes/crear-negocio/crear-negocio.component';
 import { VerDetalleNegocioComponent } from './componentes/ver-detalle-negocio/ver-detalle-negocio.component';
 import { DetalleNegocioComponent } from './componentes/detalle-negocio/detalle-negocio.component';
 
@@ -74,9 +73,7 @@ export const routes: Routes = [
     {path: 'misNegocios', component: MisNegociosComponent, canActivate: [RolesGuard], data: {expectedRole: ["CLIENTE"] } },
 
 
-    {path: 'crearNegocio', component: CrearNegocioComponent, canActivate: [RolesGuard], data: {
-        expectedRole: ["CLIENTE"] } },
-
+    
 
 
     {path: 'detalleNegocio/:codigo', component: VerDetalleNegocioComponent},
