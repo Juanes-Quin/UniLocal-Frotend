@@ -34,10 +34,8 @@
                 <label class="col-sm-2 col-form-label">Tipo: </label>
                 <div class="col-sm-10">
                     <select name="tipo" required class="form-select" [(ngModel)]="registroNegocioDTO.categoriaNegocio">
-        <option value="" selected>Seleccione un tipo para el negocio</option>
-        <!--Completar (se puede basar en cómo se cargan las ciudades del
-        formulario de registro de clientes)-->
-        </select>
+                      <option *ngFor="let item of tipo" [value]="item">{{ item }}</option>
+                    </select>
                 </div>
             </div>
             <div class="mb-3 row">
@@ -63,12 +61,25 @@
                 </button>
                 </div>
             </div>
+            
             <div class="mb-3 row">
-                <label class="col-sm-2 col-form-label">Teléfonos: </label>
-                <div class="col-sm-10">
-                    <!--Completar (se puede basar en lo hecho con los horarios)-->
+              <label class="col-sm-2 col-form-label">Teléfonos: </label>
+              <div class="col-sm-10">
+                <div *ngFor="let telefono of registroNegocioDTO.telefono; let i = index" class="mb-2 d-flex align-items-center">
+                  <input
+                    class="form-control me-2"
+                    type="text"
+                    placeholder="Ingrese el teléfono"
+                    [(ngModel)]="registroNegocioDTO.telefono[i]"
+                    name="telefono{{i}}"
+                    required
+                  />
+                  <button type="button" class="btn btn-danger" (click)="eliminarTelefono(i)">Eliminar</button>
                 </div>
+                <button type="button" class="btn btn-success mt-2" (click)="agregarTelefono()">Agregar Teléfono</button>
+              </div>
             </div>
+
             <button class="btn btn-primary" (click)="crearNegocio()" [disabled]="f.invalid">
                 <i class="fa-solid fa-circle-plus me-1"></i>Crear negocio
                 </button>

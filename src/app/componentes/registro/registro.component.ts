@@ -51,7 +51,7 @@ export class RegistroComponent {
       this.alerta = new Alerta("Debe subir una imagen", "danger");
       return;
     }
-  
+
     this.authService.registrarCliente(this.registroClienteDTO).subscribe({
       next: (data) => {
         this.alerta = new Alerta(data.respuesta, "success");
