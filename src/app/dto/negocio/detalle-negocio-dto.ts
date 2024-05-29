@@ -1,4 +1,4 @@
-import { Horario } from "../../model/horario";
+
 import { Ubicacion } from "../../model/ubicacion";
 
 export class DetalleNegocioDTO {
@@ -7,7 +7,7 @@ export class DetalleNegocioDTO {
         public descripcion: string = '',
         public telefonos: string | string[] = [],
         public ubicacion: Ubicacion = new Ubicacion(),
-        public horarios: Horario[] = [],
+        public horarios: string | string[] = [],
         public categoriaNegocio: string = '',
         public listaImagenes: string = '',
         public calificaciones: number = 0

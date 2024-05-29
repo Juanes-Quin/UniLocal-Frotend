@@ -12061,3 +12061,9 @@ body {
     cursor: not-allowed;
     /* Cambiar el cursor a no permitido */
 }
+
+.readonly-field {
+    background-color: #e9ecef; /* Color gris claro */
+    color: #6c757d; /* Color del texto */
+    cursor: not-allowed; /* Cambiar el cursor a no permitido */
+}
